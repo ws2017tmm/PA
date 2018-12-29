@@ -102,8 +102,6 @@
 
 - (IBAction)nextStep {
     
-    NSLog(@"qwwf");
-    
     
     
 }
