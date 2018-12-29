@@ -1,0 +1,63 @@
+//
+//  PAFinance.pch
+//  PAFinance
+//
+//  Created by 李响 on 2018/12/27.
+//  Copyright © 2018 StevenWu. All rights reserved.
+//
+
+#ifndef PAFinance_pch
+#define PAFinance_pch
+
+/***********偏好设置*************/
+#define PAUserDefaults [NSUserDefaults standardUserDefaults]
+
+
+/***********颜色*************/
+#define WSColor(r,g,b) [UIColor colorWithRed:(r) / 256.0 green:(g) / 256.0 blue:(b) / 256.0 alpha:1]
+#define WSGrayColor(v) WSColor(v,v,v)
+#define WSRandomColor WSColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
+#define WSHexColor(string) [UIColor colorWithHexString:string]
+/***********颜色*************/
+
+/***********屏幕适配*************/
+#define WSScreenBounds [UIScreen mainScreen].bounds
+#define WSScreenSize [UIScreen mainScreen].bounds.size
+#define WSScreenW [UIScreen mainScreen].bounds.size.width
+#define WSScreenH [UIScreen mainScreen].bounds.size.height
+#define iphoneX (WSScreenH == 812)
+#define iphone6P (WSScreenH == 736)
+#define iphone6 (WSScreenH == 667)
+#define iphone5 (WSScreenH == 568)
+#define iphone4 (WSScreenH == 480)
+#define WSMargin(margin) (margin) * (WSScreenW / 375.0)
+/***********屏幕适配*************/
+
+
+/***********三方框架*************/
+#import <SVProgressHUD.h>
+
+/***********三方框架*************/
+
+
+/***********常用的类*************/
+#import "PAUserModel.h"
+#import "UIImage+Color.h"
+#import "UIColor+Extension.h"
+#import "PAConst.h"
+#import "UIView+Extension.h"
+#import "NSString+Extension.h"
+
+/***********常用的类*************/
+
+
+/***********缩写*************/
+#define PAStoryboard(storyboard,identifier) [[UIStoryboard storyboardWithName:storyboard bundle:nil] instantiateViewControllerWithIdentifier:identifier]
+
+#define PAStoryboardInitialVC(storyboard) [[UIStoryboard storyboardWithName:storyboard bundle:nil] instantiateInitialViewController]
+
+#define PANotificationCenter NSNotificationCenter.defaultCenter
+
+/***********缩写*************/
+
+#endif /* PAFinance_pch */

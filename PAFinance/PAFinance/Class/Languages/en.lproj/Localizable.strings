@@ -1,0 +1,45 @@
+/* 
+  Localizable.strings
+  PAFinance
+
+  Created by 李响 on 2018/12/27.
+  Copyright © 2018 StevenWu. All rights reserved.
+*/
+
+"Supply Chain Finance" = "Supply Chain Finance";
+
+"Forget password" = "Forget password";
+
+"Login" = "Login";
+
+"phone number" = "phone number";
+
+"password" = "password";
+
+"mine" = "mine";
+
+"One-Account Finance" = "One-Account Finance";
+
+"Serving SMEs and Core Enterprises" = "Serving SMEs and Core Enterprises";
+
+"CA Certificate" = "CA Certificate";
+
+"Digital Certificate Encryption" = "Digital Certificate Encryption";
+
+"Expiration notice" = "Expiration notice";
+
+"Because you have not logged in for a long time, you need to log in again." = "Because you have not logged in for a long time, you need to log in again.";
+
+"OK" = "OK";
+
+"representative of enterprises" = "representative of enterprises";
+
+"Legal Representative" = "Legal Representative";
+
+"IDCard" = "IDCard";
+
+"Please note that" = "Please note that";
+
+"Follow-up operations require legal representatives to authenticate face recognition, video acquisition and so on. If the authenticated user is not the legal representative of the enterprise, the latter authentication will not be passed. Are you sure?" = "Follow-up operations require legal representatives to authenticate face recognition, video acquisition and so on. If the authenticated user is not the legal representative of the enterprise, the latter authentication will not be passed. Are you sure?";
+
+"nextStep" = "nextStep";

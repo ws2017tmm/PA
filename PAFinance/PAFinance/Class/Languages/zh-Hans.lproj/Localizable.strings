@@ -1,0 +1,47 @@
+/* 
+  Localizable.strings
+  PAFinance
+
+  Created by 李响 on 2018/12/27.
+  Copyright © 2018 StevenWu. All rights reserved.
+*/
+
+"Supply Chain Finance" = "供应链金融";
+
+"Forget password" = "忘记密码";
+
+"Login" = "登录";
+
+"phone number" = "手机号码";
+
+"password" = "密码";
+
+"mine" = "我的";
+
+"One-Account Finance" = "金融壹账通";
+
+"Serving SMEs and Core Enterprises" = "服务于中小企业、核心企业";
+
+"CA Certificate" = "CA证书";
+
+"Digital Certificate Encryption" = "数字证书加密";
+
+"Expiration notice" = "过期通知";
+
+"Because you have not logged in for a long time, you need to log in again." = "由于你长期未登录账号，需要重新登录。";
+
+"OK" = "好的";
+
+"representative of enterprises" = "企业代表";
+
+"Legal Representative" = "法定代表人";
+
+"IDCard" = "身份证";
+
+"Please note that" = "请注意";
+
+"Follow-up operations require legal representatives to authenticate face recognition, video acquisition and so on. If the authenticated user is not the legal representative of the enterprise, the latter authentication will not be passed. Are you sure?" = "后续操作需要法定代表人进行人脸识别、 视频采集等认证，如该认证用户并非企业法定代表人，则后缕认证将无法被通过， 是否确认?";
+
+"nextStep" = "下一步";
+
+
