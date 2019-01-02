@@ -47,12 +47,16 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    _nextsetpView.frame = CGRectMake(0, 74, WSScreenW, 40);
+    _nextsetpView.frame = CGRectMake(0, 10, WSScreenW, 40);
 
 }
 
 #pragma mark - 设置UI
 - (void)setupUI {
+    
+    self.title = @"信息确认";
+    // 不延伸
+    self.edgesForExtendedLayout = NO;
     
     // topNextStepView
     PANextStepView *nextsetpView = [PANextStepView viewFromXib];
@@ -82,6 +86,8 @@
     self.descAttentionLabel.text = NSLocalizedString(@"Follow-up operations require legal representatives to authenticate face recognition, video acquisition and so on. If the authenticated user is not the legal representative of the enterprise, the latter authentication will not be passed. Are you sure?", "后续操作需要法定代表人进行人脸识别、 视频采集等认证，如该认证用户并非企业法定代表人，则后缕认证将无法被通过， 是否确认?");
     /// 下一步
     [self.nextStepButton setTitle:NSLocalizedString(@"nextStep", "下一步") forState:UIControlStateNormal];
+    self.nextStepButton.layer.cornerRadius = 3;
+    self.nextStepButton.clipsToBounds = YES;
 }
 
 #pragma mark - 按钮的点击事件
