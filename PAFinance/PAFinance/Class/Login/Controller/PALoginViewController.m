@@ -142,7 +142,7 @@
     // 得到输入框的内容
     NSString *textfieldContent = [textField.text stringByReplacingCharactersInRange:range withString:string];
 //    NSLog(@"textfieldContent:%@",textfieldContent);
-    if ( textField.isSecureTextEntry) {
+    if (textField.isSecureTextEntry) {
         textField.text = textfieldContent;
         return NO;
     }

@@ -20,7 +20,7 @@
     // Do any additional setup after loading the view.
     self.toolbar.tintColor = WSColor(123, 158, 252);
     
-    [self.navigationBar setBackgroundImage:[UIImage imageWithColor:WSGrayColor(245)] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setBackgroundImage:[UIImage imageWithColor:UIColor.whiteColor] forBarMetrics:UIBarMetricsDefault];
     [self.navigationBar setShadowImage:UIImage.new];
     
 }

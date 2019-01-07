@@ -160,6 +160,8 @@
 				641EC24421D4ACCE00EB3832 /* Login */,
 				641EC23221D4A9D600EB3832 /* Home */,
 				641EC23921D4A9D600EB3832 /* Profile */,
+				64F8175D21DDFB700003137A /* FaceRecognition */,
+				64F8175E21DDFBF40003137A /* VideoRecording */,
 				641EC23621D4A9D600EB3832 /* System */,
 				64BE1FB121D60F8C00A38B4B /* Public */,
 				641EC25821D4D8BD00EB3832 /* Languages */,
@@ -384,6 +386,20 @@
 				64BE1FCD21D74F2B00A38B4B /* PAConst.m */,
 			);
 			path = Const;
+			sourceTree = "<group>";
+		};
+		64F8175D21DDFB700003137A /* FaceRecognition */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FaceRecognition;
+			sourceTree = "<group>";
+		};
+		64F8175E21DDFBF40003137A /* VideoRecording */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VideoRecording;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

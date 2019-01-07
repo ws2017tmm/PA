@@ -68,6 +68,11 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+/// 屏幕支持的方向
+-(UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 
 /// 自动登录
 - (void)automaticLogon {
