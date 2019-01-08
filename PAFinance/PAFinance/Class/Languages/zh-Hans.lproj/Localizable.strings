@@ -44,7 +44,42 @@
 
 "nextStep" = "下一步";
 
+"Please adjust the position." = "请调整位置...";
+
+"Uploading..." = "正在上传...";
+
+"Upload success" = "上传成功";
+
+"Upload failed, please re-upload" = "上传失败，请重新上传";
+
+"Please follow the instructions." = "请按提示做动作";
+
+"You need to brush your face to verify your identity\nPlease take a picture of your face to confirm your identity." = "您需要刷脸来验证身份\n请拍摄脸部来确认身份";
+
+"Start shooting" = "开始拍摄";
+
+"Face recognition" = "人脸识别";
+
+"It's too far away..." = "太远了...";
+
+"Too close..." = "太近了...";
+
+"Repeat opening your mouth, please." = "请重复张嘴动作...";
+
+"Adjust the position first" = "调整下位置先...";
+
+"Repeat shaking your head" = "请重复摇头动作...";
+
+
+
+
+
+
+
 
 "Re shooting" = "重新拍摄";
 
 "Confirm upload" = "确认上传";
+
+"Video dual recording" = "视频双录";
+

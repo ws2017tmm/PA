@@ -44,6 +44,44 @@
 
 "nextStep" = "nextStep";
 
+"Please adjust the position." = "Please adjust the position.";
+
+"Uploading..." = "Uploading...";
+
+"Upload failed, please re-upload" = "Upload failed, please re-upload";
+
+"Upload success" = "Upload success";
+
+"Please follow the instructions." = "Please follow the instructions";
+
+"You need to brush your face to verify your identity\nPlease take a picture of your face to confirm your identity." = "You need to brush your face to verify your identity\nPlease take a picture of your face to confirm your identity.";
+
+"Start shooting" = "tart shooting";
+
+"Face recognition" = "Face recognition";
+
+"It's too far away..." = "It's too far away...";
+
+"Too close..." = "Too close...";
+
+"Repeat opening your mouth, please." = "Repeat opening your mouth, please.";
+
+"Adjust the position first" = "Adjust the position first";
+
+"Repeat shaking your head" = "Repeat shaking your head";
+
+
+
+
+
+
+
+
+
+
+
 "Re shooting" = "Re shooting";
 
 "Confirm upload" = "Confirm upload";
+
+"Video dual recording" = "Video dual recording";

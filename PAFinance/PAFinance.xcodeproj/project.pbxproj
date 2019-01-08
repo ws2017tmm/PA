@@ -63,6 +63,8 @@
 		64D978C721E347FB00F4B3F3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D978C621E347FB00F4B3F3 /* libc++.tbd */; };
 		64D978C921E3588400F4B3F3 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D978C821E3588400F4B3F3 /* iflyMSC.framework */; };
 		64D978CC21E4777900F4B3F3 /* UIButton+Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D978CB21E4777900F4B3F3 /* UIButton+Button.m */; };
+		64D978D321E499EB00F4B3F3 /* PAPrepareVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D978D121E499EB00F4B3F3 /* PAPrepareVideoViewController.m */; };
+		64D978D421E499EB00F4B3F3 /* PAPrepareVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D978D221E499EB00F4B3F3 /* PAPrepareVideoViewController.xib */; };
 		D7F3CF064247BD1F123E1594 /* libPods-PAFinance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C838F243A9E9DA04757324 /* libPods-PAFinance.a */; };
 /* End PBXBuildFile section */
 
@@ -161,6 +163,9 @@
 		64D978C821E3588400F4B3F3 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		64D978CA21E4777900F4B3F3 /* UIButton+Button.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Button.h"; sourceTree = "<group>"; };
 		64D978CB21E4777900F4B3F3 /* UIButton+Button.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Button.m"; sourceTree = "<group>"; };
+		64D978D021E499EB00F4B3F3 /* PAPrepareVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAPrepareVideoViewController.h; sourceTree = "<group>"; };
+		64D978D121E499EB00F4B3F3 /* PAPrepareVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAPrepareVideoViewController.m; sourceTree = "<group>"; };
+		64D978D221E499EB00F4B3F3 /* PAPrepareVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PAPrepareVideoViewController.xib; sourceTree = "<group>"; };
 		82ED49697C46D76786AB6790 /* Pods-PAFinance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PAFinance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PAFinance/Pods-PAFinance.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -575,6 +580,30 @@
 			path = Permission;
 			sourceTree = "<group>";
 		};
+		64D978CD21E4992A00F4B3F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		64D978CE21E4993400F4B3F3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64D978D021E499EB00F4B3F3 /* PAPrepareVideoViewController.h */,
+				64D978D121E499EB00F4B3F3 /* PAPrepareVideoViewController.m */,
+				64D978D221E499EB00F4B3F3 /* PAPrepareVideoViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		64D978CF21E4994100F4B3F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		64F8175D21DDFB700003137A /* FaceRecognition */ = {
 			isa = PBXGroup;
 			children = (
@@ -588,6 +617,9 @@
 		64F8175E21DDFBF40003137A /* VideoRecording */ = {
 			isa = PBXGroup;
 			children = (
+				64D978CD21E4992A00F4B3F3 /* Model */,
+				64D978CF21E4994100F4B3F3 /* View */,
+				64D978CE21E4993400F4B3F3 /* Controller */,
 			);
 			path = VideoRecording;
 			sourceTree = "<group>";
@@ -661,6 +693,7 @@
 				64BE1FD921D7695B00A38B4B /* PANextStepView.xib in Resources */,
 				641EC22821D4A0C200EB3832 /* LaunchScreen.storyboard in Resources */,
 				641EC22521D4A0C200EB3832 /* Assets.xcassets in Resources */,
+				64D978D421E499EB00F4B3F3 /* PAPrepareVideoViewController.xib in Resources */,
 				64D978A221E3471B00F4B3F3 /* openMouth0.png in Resources */,
 				64D9789F21E3471B00F4B3F3 /* shakeHead3.png in Resources */,
 				64D978A321E3471B00F4B3F3 /* openMouth1.png in Resources */,
@@ -740,6 +773,7 @@
 				641EC27321D5C84F00EB3832 /* PAHomeViewController.m in Sources */,
 				64D978A421E3471B00F4B3F3 /* CanvasView.m in Sources */,
 				641EC26D21D5B6C900EB3832 /* PATabBarController.m in Sources */,
+				64D978D321E499EB00F4B3F3 /* PAPrepareVideoViewController.m in Sources */,
 				64BE1FAD21D5F5B600A38B4B /* WSLoginTextField.m in Sources */,
 				64D978A721E3471B00F4B3F3 /* IFlyFaceImage.m in Sources */,
 				64BE1FBF21D60F8C00A38B4B /* UIBarButtonItem+Item.m in Sources */,

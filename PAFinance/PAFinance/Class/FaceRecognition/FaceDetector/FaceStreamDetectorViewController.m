@@ -24,6 +24,7 @@
 #import "PANextStepView.h"
 #import <PPNetworkHelper.h>
 #import <SVProgressHUD.h>
+#import "PAPrepareVideoViewController.h"
 
 @interface FaceStreamDetectorViewController ()<CaptureManagerDelegate,CaptureNowImageDelegate>
 {
@@ -158,17 +159,17 @@
     [self.view addSubview:imgView];
     
     // 提示文字的label(张嘴,摇头)
-    self.textLabel = [[UILabel alloc]initWithFrame:CGRectMake((ScreenWidth-150)/2, CGRectGetMaxY(imgView.frame)+10, 150, 30)];
+    self.textLabel = [[UILabel alloc]initWithFrame:CGRectMake((ScreenWidth-150)/2, CGRectGetMaxY(imgView.frame)+10, 300, 30)];
     self.textLabel.textAlignment = NSTextAlignmentCenter;
     self.textLabel.layer.cornerRadius = 15;
-    self.textLabel.text = @"请按提示做动作";
+    self.textLabel.text = NSLocalizedString(@"Please follow the instructions.", "请按提示做动作");
     self.textLabel.textColor = [UIColor blackColor];
     [self.view addSubview:self.textLabel];
     self.textLabel.hidden = YES;
     
     self.titleLabel = [[UILabel alloc] init];
     self.titleLabel.font = [UIFont boldSystemFontOfSize:15];
-    self.titleLabel.text = @"刷脸验证";
+    self.titleLabel.text = NSLocalizedString(@"Brush face verification", "刷脸验证");
     [self.titleLabel sizeToFit];
     self.titleLabel.ws_centerX = self.previewView.ws_centerX;
     self.titleLabel.ws_y = self.previewView.ws_bottomY + 20;
@@ -177,7 +178,7 @@
     self.tipLabel = [[UILabel alloc] init];
     self.tipLabel.numberOfLines = 0;
     self.tipLabel.textAlignment = NSTextAlignmentCenter;
-    self.tipLabel.text = @"您需要刷脸来验证身份\n请拍摄脸部来确认身份";
+    self.tipLabel.text = NSLocalizedString(@"You need to brush your face to verify your identity\nPlease take a picture of your face to confirm your identity.", "您需要刷脸来验证身份\n请拍摄脸部来确认身份");
     [self.tipLabel sizeToFit];
     self.tipLabel.ws_centerX = self.previewView.ws_centerX;
     self.tipLabel.ws_y = self.titleLabel.ws_bottomY + 5;
@@ -191,7 +192,7 @@
     self.startShot.ws_centerX = self.view.ws_centerX;
 //    self.startShot.ws_y = self.view.ws_bottomY - self.startShot.ws_height - 10;
     [self.startShot setBackgroundColor:WSHexColor(@"0x5574FF")];
-    [self.startShot setTitle:@"开始拍摄" forState:UIControlStateNormal];
+    [self.startShot setTitle:NSLocalizedString(@"Start shooting", "开始拍摄") forState:UIControlStateNormal];
     [self.startShot addTarget:self action:@selector(startShot:) forControlEvents:UIControlEventTouchUpInside];
     self.startShot.layer.cornerRadius = 5;
     self.startShot.layer.masksToBounds = YES;
@@ -239,7 +240,7 @@
 #pragma mark --- 创建相机
 -(void)makeCamera
 {
-    self.title = @"人脸识别";
+    self.title = NSLocalizedString(@"Face recognition", "人脸识别");
     //adjust the UI for iOS 7
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
     if ( IOS7_OR_LATER ){
@@ -281,6 +282,7 @@
     [self.viewCanvas addSubview:lineView];
     self.lineView = lineView;
     [self startAnimation];
+    
     
     
 //    NSString *str = [NSString stringWithFormat:@"{{%f, %f}, {220, 240}}",(ScreenWidth-220)/2,(ScreenWidth-240)/2+15];
@@ -552,29 +554,29 @@
 {
     //判断位置
     if (right - left < 230 || bottom - top < 250) {
-        self.textLabel.text = @"太远了...";
+        self.textLabel.text = NSLocalizedString(@"It's too far away...", "太远了...");
         [self delateNumber];//清数据
         isCrossBorder = YES;
         return YES;
     }else if (right - left > 320 || bottom - top > 320) {
-        self.textLabel.text = @"太近了...";
+        self.textLabel.text = NSLocalizedString(@"Too close...", "太近了...");;
         [self delateNumber];//清数据
         isCrossBorder = YES;
         return YES;
     }else{
         if (isJudgeMouth != YES) {
-            self.textLabel.text = @"请重复张嘴动作...";
+            self.textLabel.text = NSLocalizedString(@"Repeat opening your mouth, please.", "请重复张嘴动作...");
             [self tomAnimationWithName:@"openMouth" count:2];
 #pragma mark --- 限定脸部位置为中间位置
             if (left < 100 || top < 80 || right > 540 || bottom > 400) {
                 isCrossBorder = YES;
                 isJudgeMouth = NO;
-                self.textLabel.text = @"调整下位置先...";
+                self.textLabel.text = NSLocalizedString(@"Adjust the position first", "调整下位置先...");
                 [self delateNumber];//清数据
                 return YES;
             }
         }else if (isJudgeMouth == YES && isShakeHead != YES) {
-            self.textLabel.text = @"请重复摇头动作...";
+            self.textLabel.text = NSLocalizedString(@"Repeat shaking your head", "请重复摇头动作...");
             [self tomAnimationWithName:@"shakeHead" count:4];
             number = 0;
         }else{
@@ -673,7 +675,7 @@
     
     //开始摄像
     [self.previewLayer.session startRunning];
-    self.textLabel.text = @"请调整位置...";
+    self.textLabel.text = NSLocalizedString(@"Please adjust the position.", "请调整位置...");
 }
 
 #pragma mark --- 上传图片按钮点击事件
@@ -683,15 +685,16 @@
     [PPNetworkHelper uploadImagesWithURL:@"uploadImage" parameters:parameters name:@"files" images:@[_imageView.image] fileNames:nil imageScale:1.0 imageType:nil progress:^(NSProgress *progress) {
         // 进度
         float completed = progress.completedUnitCount / progress.totalUnitCount;
-        [SVProgressHUD showProgress:completed status:@"正在上传..."];
+        [SVProgressHUD showProgress:completed status:NSLocalizedString(@"Uploading...", "正在上传...")];
     } success:^(id responseObject) {
         // 上传成功
-        [SVProgressHUD showInfoWithStatus:@"上传成功"];
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Upload success", "上传成功")];
         // 去视频录制界面
-        
+        [self.navigationController pushViewController:[PAPrepareVideoViewController new] animated:YES];
     } failure:^(NSError *error) {
         // 上传失败
-        [SVProgressHUD showErrorWithStatus:@"上传失败，请重新上传"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Upload failed, please re-upload", "上传失败，请重新上传")];
+        [self.navigationController pushViewController:[PAPrepareVideoViewController new] animated:YES];
     }];
     
 }
@@ -732,7 +735,13 @@
 {
     timeCount = 3;
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
-    self.textLabel.text = [NSString stringWithFormat:@"%ld s后拍照...", (long)timeCount];
+    
+    NSString *currentLanguage = NSBundle.mainBundle.preferredLocalizations.firstObject;
+    if ([currentLanguage isEqualToString:@"zh-Hans"]) {
+        self.textLabel.text = [NSString stringWithFormat:@"%zd s后拍照...", timeCount];
+    } else {
+        self.textLabel.text = [NSString stringWithFormat:@"Take a picture after %zd seconds", timeCount];
+    }
     
 }
 
@@ -741,8 +750,12 @@
 {
     timeCount --;
     if(timeCount >= 1) {
-        self.textLabel.text = [NSString  stringWithFormat:@"%ld s后拍照...",(long)timeCount];
-    } else {
+        NSString *currentLanguage = NSBundle.mainBundle.preferredLocalizations.firstObject;
+        if ([currentLanguage isEqualToString:@"zh-Hans"]) {
+            self.textLabel.text = [NSString stringWithFormat:@"%zd s后拍照...", timeCount];
+        } else {
+            self.textLabel.text = [NSString stringWithFormat:@"Take a picture after %zd seconds", timeCount];
+        }    } else {
         [theTimer invalidate];
         theTimer=nil;
         self.captureManager.nowImageDelegate=self;
