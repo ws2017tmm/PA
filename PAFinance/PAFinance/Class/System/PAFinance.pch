@@ -31,6 +31,8 @@
 #define iphone5 (WSScreenH == 568)
 #define iphone4 (WSScreenH == 480)
 #define WSMargin(margin) (margin) * (WSScreenW / 375.0)
+#define WSNavAndStatusHight (self.navigationController.navigationBar.frame.size.height+[[UIApplication sharedApplication] statusBarFrame].size.height)
+
 /***********屏幕适配*************/
 
 
@@ -47,6 +49,7 @@
 #import "PAConst.h"
 #import "UIView+Extension.h"
 #import "NSString+Extension.h"
+#import "UIButton+Button.h"
 
 /***********常用的类*************/
 
@@ -57,7 +60,6 @@
 #define PAStoryboardInitialVC(storyboard) [[UIStoryboard storyboardWithName:storyboard bundle:nil] instantiateInitialViewController]
 
 #define PANotificationCenter NSNotificationCenter.defaultCenter
-
 /***********缩写*************/
 
 #endif /* PAFinance_pch */

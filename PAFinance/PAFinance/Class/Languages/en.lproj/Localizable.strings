@@ -43,3 +43,7 @@
 "Follow-up operations require legal representatives to authenticate face recognition, video acquisition and so on. If the authenticated user is not the legal representative of the enterprise, the latter authentication will not be passed. Are you sure?" = "Follow-up operations require legal representatives to authenticate face recognition, video acquisition and so on. If the authenticated user is not the legal representative of the enterprise, the latter authentication will not be passed. Are you sure?";
 
 "nextStep" = "nextStep";
+
+"Re shooting" = "Re shooting";
+
+"Confirm upload" = "Confirm upload";

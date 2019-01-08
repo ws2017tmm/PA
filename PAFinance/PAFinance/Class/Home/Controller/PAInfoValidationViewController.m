@@ -8,6 +8,7 @@
 
 #import "PAInfoValidationViewController.h"
 #import "PANextStepView.h"
+#import "FaceStreamDetectorViewController.h"
 
 @interface PAInfoValidationViewController ()
 
@@ -107,9 +108,9 @@
 
 /// 去人脸识别界面
 - (IBAction)nextStep {
-    
-    
-    
+    FaceStreamDetectorViewController *faceVC = [[FaceStreamDetectorViewController alloc]init];
+//    faceVC.faceDelegate = self;
+    [self.navigationController pushViewController:faceVC animated:YES];
 }
 
 
