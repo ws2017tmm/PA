@@ -61,12 +61,15 @@
     self.title = NSLocalizedString(@"Video dual recording", "视频双录");
     self.totalTipLabel.text = NSLocalizedString(@"Please record a video to confirm your identity.", "请您录制一段视频来确认您的身份");
     self.prepareLabel.text = NSLocalizedString(@"Please get ready before video recording", "视频录制前请做好一下准备");
+    
     self.tipLabel1.text = NSLocalizedString(@"Get enough light", "光线充足");
     self.tipLabel2.text = NSLocalizedString(@"Quiet around", "周围安静");
     self.tipLabel3.text = NSLocalizedString(@"Do not hide your face", "勿遮挡面部";);
     self.tipLabel4.text = NSLocalizedString(@"Clear voice", "声音清晰");
-    [self.startVideoButton setTitle:NSLocalizedString(@"start recording", "开始录制") forState:UIControlStateNormal];
     
+    [self.startVideoButton setTitle:NSLocalizedString(@"start recording", "开始录制") forState:UIControlStateNormal];
+    self.startVideoButton.layer.cornerRadius = 5;
+    self.startVideoButton.layer.masksToBounds = YES;
     
 }
 

@@ -151,7 +151,6 @@
     CGFloat previewViewWH = ScreenWidth * 0.8;
     CGFloat previewViewX = (ScreenWidth-previewViewWH) * 0.5;
     self.previewView = [[UIView alloc]initWithFrame:CGRectMake(previewViewX, 80, previewViewWH, previewViewWH)];
-    self.previewView.backgroundColor = UIColor.redColor;
     [self.view addSubview:self.previewView];
     
     // 动画图片提示
@@ -160,7 +159,6 @@
     
     // 提示文字的label(张嘴,摇头)
     self.textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(imgView.frame)+10, ScreenWidth, 30)];
-    self.textLabel.backgroundColor = UIColor.redColor;
     self.textLabel.textAlignment = NSTextAlignmentCenter;
     self.textLabel.layer.cornerRadius = 15;
     self.textLabel.text = NSLocalizedString(@"Please follow the instructions.", "请按提示做动作");
