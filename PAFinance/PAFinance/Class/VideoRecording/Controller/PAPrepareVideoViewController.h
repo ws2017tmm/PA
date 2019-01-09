@@ -2,7 +2,7 @@
 //  PAPrepareVideoViewController.h
 //  PAFinance
 //
-//  Created by 李响 on 2019/1/8.
+//  Created by StevenWu on 2019/1/8.
 //  Copyright © 2019 StevenWu. All rights reserved.
 //  视频双录界面
 

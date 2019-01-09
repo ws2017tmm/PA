@@ -2,7 +2,7 @@
 //  PAVerificationCodeTool.h
 //  PAFinance
 //
-//  Created by 李响 on 2018/12/28.
+//  Created by StevenWu on 2018/12/28.
 //  Copyright © 2018 StevenWu. All rights reserved.
 //  获取验证码工具类
 

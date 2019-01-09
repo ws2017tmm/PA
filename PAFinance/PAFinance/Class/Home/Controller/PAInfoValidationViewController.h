@@ -2,7 +2,7 @@
 //  PAInfoValidationViewController.h
 //  PAFinance
 //
-//  Created by 李响 on 2018/12/29.
+//  Created by StevenWu on 2018/12/29.
 //  Copyright © 2018 StevenWu. All rights reserved.
 //  信息确认
 

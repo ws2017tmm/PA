@@ -2,12 +2,13 @@
 //  PAPrepareVideoViewController.m
 //  PAFinance
 //
-//  Created by 李响 on 2019/1/8.
+//  Created by StevenWu on 2019/1/8.
 //  Copyright © 2019 StevenWu. All rights reserved.
 //
 
 #import "PAPrepareVideoViewController.h"
 #import "PANextStepView.h"
+#import "PAVideoController.h"
 
 @interface PAPrepareVideoViewController ()
 
@@ -74,8 +75,9 @@
 }
 
 - (IBAction)startRecording {
-    
-    
+    PAVideoController *videoC = [[PAVideoController alloc] init];
+    [self presentViewController:videoC animated:YES completion:nil];
+//    [self.navigationController pushViewController:videoC animated:YES];
 }
 
 
