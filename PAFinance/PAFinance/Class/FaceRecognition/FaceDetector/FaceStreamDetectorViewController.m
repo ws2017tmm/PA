@@ -106,6 +106,14 @@
     [self makeNumber];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    //开始摄像
+    [self.captureManager setup];
+    [self.captureManager addObserver];
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
@@ -294,9 +302,6 @@
     self.viewCanvas.arrFixed = arr;
     self.viewCanvas.hidden = NO;
     
-    //开始摄像
-    [self.captureManager setup];
-    [self.captureManager addObserver];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -690,10 +695,13 @@
         [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Upload success", "上传成功")];
         // 去视频录制界面
         [self.navigationController pushViewController:[PAPrepareVideoViewController new] animated:YES];
+        [self didClickPhotoAgain];
     } failure:^(NSError *error) {
         // 上传失败
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Upload failed, please re-upload", "上传失败，请重新上传")];
         [self.navigationController pushViewController:[PAPrepareVideoViewController new] animated:YES];
+        [self didClickPhotoAgain];
+        
     }];
     
 }
