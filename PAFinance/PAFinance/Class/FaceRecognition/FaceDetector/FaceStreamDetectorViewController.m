@@ -108,7 +108,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
+    [super viewDidDisappear:animated];
     
     //停止摄像
     [self.previewLayer.session stopRunning];

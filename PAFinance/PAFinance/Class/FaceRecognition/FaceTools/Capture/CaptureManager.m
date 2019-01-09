@@ -23,7 +23,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 
 @implementation CaptureManager
 
-@synthesize session;
+//@synthesize session;
 @synthesize previewLayer;
 
 #pragma mark - Capture Session Configuration
@@ -72,8 +72,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
         [self setBackgroundRecordingID:UIBackgroundTaskInvalid];
         [self.session beginConfiguration];
         
-        if([session canSetSessionPreset:AVCaptureSessionPreset640x480]){
-            [session setSessionPreset:AVCaptureSessionPreset640x480];
+        if([self.session canSetSessionPreset:AVCaptureSessionPreset640x480]){
+            [self.session setSessionPreset:AVCaptureSessionPreset640x480];
         }
 
         NSError *error = nil;
@@ -84,18 +84,19 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
         if (error){
             NSLog(@"%@", error);
         }
-        if ([session canAddInput:videoDeviceInput]){
-            [session addInput:videoDeviceInput];
+        if ([self.session canAddInput:videoDeviceInput]){
+            [self.session addInput:videoDeviceInput];
             [self setVideoDeviceInput:videoDeviceInput];
         }
         
          //output device
         AVCaptureVideoDataOutput *videoDataOutput = [[AVCaptureVideoDataOutput alloc] init];
-        if ([session canAddOutput:videoDataOutput]){
-            [session addOutput:videoDataOutput];
+        if ([self.session canAddOutput:videoDataOutput]){
+            [self.session addOutput:videoDataOutput];
             AVCaptureConnection *connection = [videoDataOutput connectionWithMediaType:AVMediaTypeVideo];
             if ([connection isVideoStabilizationSupported]){
-                [connection setEnablesVideoStabilizationWhenAvailable:YES];
+//                [connection setEnablesVideoStabilizationWhenAvailable:YES];
+                [connection setPreferredVideoStabilizationMode:AVCaptureVideoStabilizationModeAuto];
             }
             
             if ([connection isVideoOrientationSupported]){
