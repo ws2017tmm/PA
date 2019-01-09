@@ -159,7 +159,8 @@
     [self.view addSubview:imgView];
     
     // 提示文字的label(张嘴,摇头)
-    self.textLabel = [[UILabel alloc]initWithFrame:CGRectMake((ScreenWidth-150)/2, CGRectGetMaxY(imgView.frame)+10, 300, 30)];
+    self.textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(imgView.frame)+10, ScreenWidth, 30)];
+    self.textLabel.backgroundColor = UIColor.redColor;
     self.textLabel.textAlignment = NSTextAlignmentCenter;
     self.textLabel.layer.cornerRadius = 15;
     self.textLabel.text = NSLocalizedString(@"Please follow the instructions.", "请按提示做动作");

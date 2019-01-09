@@ -54,6 +54,8 @@
 
 "Please follow the instructions." = "请按提示做动作";
 
+"Brush face verification" = "刷脸验证";
+
 "You need to brush your face to verify your identity\nPlease take a picture of your face to confirm your identity." = "您需要刷脸来验证身份\n请拍摄脸部来确认身份";
 
 "Start shooting" = "开始拍摄";
@@ -70,16 +72,32 @@
 
 "Repeat shaking your head" = "请重复摇头动作...";
 
-
-
-
-
-
-
-
 "Re shooting" = "重新拍摄";
 
 "Confirm upload" = "确认上传";
 
 "Video dual recording" = "视频双录";
+
+"Please record a video to confirm your identity." = "请您录制一段视频来确认您的身份";
+
+"Please get ready before video recording" = "视频录制前请做好一下准备";
+
+"Get enough light" = "光线充足";
+
+"Quiet around" = "周围安静";
+
+"Do not hide your face" = "勿遮挡面部";
+
+"Clear voice" = "声音清晰";
+
+"start recording" = "开始录制";
+
+
+
+
+
+
+
+
+
 

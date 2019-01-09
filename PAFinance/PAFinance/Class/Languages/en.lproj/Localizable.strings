@@ -54,6 +54,8 @@
 
 "Please follow the instructions." = "Please follow the instructions";
 
+"Brush face verification" = "Brush face verification";
+
 "You need to brush your face to verify your identity\nPlease take a picture of your face to confirm your identity." = "You need to brush your face to verify your identity\nPlease take a picture of your face to confirm your identity.";
 
 "Start shooting" = "tart shooting";
@@ -70,18 +72,22 @@
 
 "Repeat shaking your head" = "Repeat shaking your head";
 
-
-
-
-
-
-
-
-
-
-
 "Re shooting" = "Re shooting";
 
 "Confirm upload" = "Confirm upload";
 
 "Video dual recording" = "Video dual recording";
+
+"Please record a video to confirm your identity." = "Please record a video to confirm your identity.";
+
+"Please get ready before video recording" = "Please get ready before video recording";
+
+"Get enough light" = "Get enough light";
+
+"Quiet around" = "Quiet around";
+
+"Do not hide your face" = "Do not hide your face";
+
+"Clear voice" = "Clear voice";
+
+"start recording" = "start recording";
