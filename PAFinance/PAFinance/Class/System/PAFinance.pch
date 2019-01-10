@@ -18,6 +18,7 @@
 #define WSGrayColor(v) WSColor(v,v,v)
 #define WSRandomColor WSColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
 #define WSHexColor(string) [UIColor colorWithHexString:string]
+#define WSRGBAColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(r)/255.0 blue:(r)/255.0 alpha:a]
 /***********颜色*************/
 
 /***********屏幕适配*************/
@@ -50,6 +51,8 @@
 #import "UIView+Extension.h"
 #import "NSString+Extension.h"
 #import "UIButton+Button.h"
+#import "UIBarButtonItem+Item.h"
+#import "NSDate+Compare.h"
 
 /***********常用的类*************/
 

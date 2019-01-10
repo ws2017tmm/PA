@@ -75,9 +75,17 @@
 }
 
 - (IBAction)startRecording {
-    PAVideoController *videoC = [[PAVideoController alloc] init];
-    [self presentViewController:videoC animated:YES completion:nil];
-//    [self.navigationController pushViewController:videoC animated:YES];
+    
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"视频录制会产生较大流量，请尽量使用WIFI" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *comfirmAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        PAVideoController *videoC = [[PAVideoController alloc] init];
+        //    [self presentViewController:videoC animated:YES completion:nil];
+        [self.navigationController pushViewController:videoC animated:YES];
+    }];
+    [alertVC addAction:comfirmAction];
+    
+    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 

@@ -14,15 +14,22 @@
 #import <Masonry.h>
 #import "UIUtility.h"
 #import "UtilsMacro.h"
+#import <SVProgressHUD.h>
 //时间大于这个就是视频，否则为拍照
 #define TimeMax 1
 
 typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 @interface PAVideoView()<AVCaptureFileOutputRecordingDelegate>
 /** 切换相机 */
-@property (nonatomic,strong) UIButton *switchCameraBtn;
+//@property (nonatomic,strong) UIButton *switchCameraBtn;
 /** 返回 */
-@property (nonatomic,strong) UIButton *exitBtn;
+//@property (nonatomic,strong) UIButton *exitBtn;
+/** 提示图片(小喇叭) */
+@property (nonatomic,strong) UIImageView *tipImageView;
+/** 提示信息 */
+@property (nonatomic,strong) UILabel *tipLabel;
+/** 需要念出的一段文字 */
+@property (nonatomic,strong) UILabel *titleLabel;
 /** 请出拍照，按住拍摄 */
 @property (nonatomic,strong) UILabel *hintTitleLB;
 /** 拍照 */
@@ -56,7 +63,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 @property (assign,nonatomic) UIBackgroundTaskIdentifier backgroundTaskIdentifier;
 @property (assign,nonatomic) UIBackgroundTaskIdentifier lastBackgroundTaskIdentifier;
 
-/** 记录录制的时间 默认最大10秒 */
+/** 记录录制的时间 默认最大18秒 */
 @property (assign, nonatomic) NSInteger seconds;
 /** 记录需要保存视频的路径 */
 @property (strong, nonatomic) NSURL *saveVideoUrl;
@@ -68,6 +75,10 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 @property (nonatomic,strong) UIImage *takeImage;
 @property (nonatomic,strong) UIImageView *takeImageView;
 
+/** 开始录制时间 */
+@property (nonatomic,strong) NSDate *startRacordDate;
+///** 结束录制时间 */
+//@property (nonatomic,strong) NSDate *endRacordDate;
 
 @end
 
@@ -80,7 +91,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     if (self) {
         [self setupSubviews];
 //        if (self.PASeconds == 0) {
-//            self.PASeconds = 10;
+//            self.PASeconds = 18;
 //        }
         [self setupCustomCamera];
     }
@@ -93,8 +104,11 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
  */
 - (void)setupSubviews {
     [self addSubview:self.bgView];
-    [self addSubview:self.switchCameraBtn];
-    [self addSubview:self.exitBtn];
+//    [self addSubview:self.switchCameraBtn];
+//    [self addSubview:self.exitBtn];
+    [self addSubview:self.tipImageView];
+    [self addSubview:self.tipLabel];
+    [self addSubview:self.titleLabel];
     [self addSubview:self.progressView];
     [self addSubview:self.photographImageView];
     [self addSubview:self.hintTitleLB];
@@ -104,16 +118,33 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     [self.finishView addSubview:self.afreshBtn];
     [self.finishView addSubview:self.confirmBtn];
     
-    [self.switchCameraBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).offset(StatusBarHeight);
-        make.right.equalTo(self).offset(-20);
-        make.size.mas_offset(CGSizeMake(32, 26));
+//    [self.switchCameraBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self).offset(StatusBarHeight);
+//        make.right.equalTo(self).offset(-20);
+//        make.size.mas_offset(CGSizeMake(32, 26));
+//    }];
+    
+//    [self.exitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self).offset(30);
+//        make.bottom.equalTo(self).offset(- (TabBarHeight - 9));
+//        make.size.mas_offset(CGSizeMake(36, 36));
+//    }];
+    
+    [self.tipImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(20);
+        make.top.mas_equalTo(NavigationHeigh+10);
     }];
     
-    [self.exitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(30);
-        make.bottom.equalTo(self).offset(- (TabBarHeight - 9));
-        make.size.mas_offset(CGSizeMake(36, 36));
+    [self.tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.tipImageView.mas_right).offset(5);
+        make.right.mas_equalTo(self).offset(-20);
+        make.centerY.mas_equalTo(self.tipImageView.mas_centerY);
+    }];
+    
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.tipImageView.mas_left).offset(5);
+        make.right.mas_equalTo(self.tipLabel.mas_right);
+        make.top.mas_equalTo(self.tipLabel.mas_bottom).offset(5);
     }];
     
     [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -152,16 +183,16 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     }];
     
     
-    [self performSelector:@selector(hiddenTipsLabel) withObject:nil afterDelay:4];
+//    [self performSelector:@selector(hiddenTipsLabel) withObject:nil afterDelay:4];
 }
 
 
 /**
  隐藏提示信息
  */
-- (void)hiddenTipsLabel {
-    self.hintTitleLB.hidden = YES;
-}
+//- (void)hiddenTipsLabel {
+//    self.hintTitleLB.hidden = YES;
+//}
 
 
 /**
@@ -221,7 +252,8 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
     self.previewLayer.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREENH_HEIGHT);
     self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;//填充模式
-    [self.bgView.layer addSublayer:self.previewLayer];
+//    [self.bgView.layer addSublayer:self.previewLayer];
+    [self.bgView.layer insertSublayer:self.previewLayer atIndex:0];
     
     [self addNotificationToCaptureDevice:captureDevice];
     [self addGenstureRecognizer];
@@ -231,6 +263,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 #pragma mark - 视频输出代理 AVCaptureFileOutputRecordingDelegate
 - (void)captureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections{
     NSLog(@"开始录制...");
+    self.startRacordDate = [NSDate date];
     self.seconds = self.PASeconds;
     [self performSelector:@selector(onStartTranscribe:) withObject:fileURL afterDelay:1.0];
 }
@@ -238,6 +271,14 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 - (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error{
     NSLog(@"视频录制完成.");
+    
+    // 判断录制时间,如果太短，需要重新录制
+    long differenceSecond = [NSDate dateTimeDifferenceWithStartTime:self.startRacordDate endTime:[NSDate date]];
+    if (differenceSecond <= 8) { // 录制时间过短
+        [self recordingAgain:outputFileURL];
+        return;
+    }
+    
     [self changeViewLayout];
     if (self.isVideo) {
         self.saveVideoUrl = outputFileURL;
@@ -254,6 +295,17 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         self.saveVideoUrl = nil;
         [self videoHandlePhoto:outputFileURL];
     }
+}
+
+#pragma mark - 录制时间太短，重新录制
+- (void)recordingAgain:(NSURL *)url {
+    [SVProgressHUD showInfoWithStatus:@"录制时间太短，请重新录制"];
+    
+    [[NSFileManager defaultManager] removeItemAtURL:url error:nil];
+    self.isVideo = NO;
+    [self.progressView clearProgress];
+    self.hintTitleLB.text = @"00:00:18";
+    
 }
 
 - (void)videoHandlePhoto:(NSURL *)url {
@@ -295,7 +347,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     if ([self.captureMovieFileOutput isRecording]) {
         -- self.seconds;
         if (self.seconds > 0) {
-            NSLog(@"%ld", self.seconds);
+            NSLog(@"---%ld", self.seconds);
             if (self.PASeconds - self.seconds >= TimeMax && !self.isVideo) {
                 self.isVideo = YES; // 长按时间超过TimeMax 表示是视频录制
                 self.progressView.timeMax = self.seconds;
@@ -316,8 +368,8 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
  拍照或者拍摄完成改变UI
  */
 - (void)changeViewLayout {
-    self.exitBtn.hidden = YES;
-    self.switchCameraBtn.hidden = YES;
+//    self.exitBtn.hidden = YES;
+//    self.switchCameraBtn.hidden = YES;
     self.photographImageView.hidden = YES;
     self.finishView.hidden = NO;
     
@@ -325,7 +377,6 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         [self.progressView clearProgress];
     }
     // 更新界面
-    
     [UIView animateWithDuration:0.25 animations:^{
         [self layoutIfNeeded];
     }];
@@ -352,8 +403,8 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         self.takeImageView.hidden = YES;
     }
     
-    self.exitBtn.hidden = NO;
-    self.switchCameraBtn.hidden = NO;
+//    self.exitBtn.hidden = NO;
+//    self.switchCameraBtn.hidden = NO;
     self.photographImageView.hidden = NO;
     self.finishView.hidden = YES;
     
@@ -429,18 +480,41 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 
 #pragma mark - 懒加载
-- (UIButton *)switchCameraBtn {
-    if (!_switchCameraBtn) {
-        _switchCameraBtn = [UIUtility initButtonWithImageName:@"switchover" target:self action:@selector(switchCamera)];
+//- (UIButton *)switchCameraBtn {
+//    if (!_switchCameraBtn) {
+//        _switchCameraBtn = [UIUtility initButtonWithImageName:@"switchover" target:self action:@selector(switchCamera)];
+//    }
+//    return _switchCameraBtn;
+//}
+
+//- (UIButton *)exitBtn {
+//    if (!_exitBtn) {
+//        _exitBtn = [UIUtility initButtonWithImageName:@"backDown" target:self action:@selector(eixtCamera)];
+//    }
+//    return _exitBtn;
+//}
+
+- (UIImageView *)tipImageView {
+    if (_tipImageView == nil) {
+        _tipImageView = [UIUtility initImageViewWithImageName:@"tips"];
     }
-    return _switchCameraBtn;
+    return _tipImageView;
 }
 
-- (UIButton *)exitBtn {
-    if (!_exitBtn) {
-        _exitBtn = [UIUtility initButtonWithImageName:@"backDown" target:self action:@selector(eixtCamera)];
+- (UILabel *)tipLabel {
+    if (_tipLabel == nil) {
+        _tipLabel = [UIUtility initLabelWithText:@"录制时，请将头部放在一下框内，并用普通话大声朗读一下文字。" fontSize:FontSize12 color:APP_GRAY textAlignment:NSTextAlignmentCenter];
+        _tipLabel.numberOfLines = 0;
     }
-    return _exitBtn;
+    return _tipLabel;
+}
+
+- (UILabel *)titleLabel {
+    if (_titleLabel == nil) {
+        _titleLabel = [UIUtility initLabelWithText:@"我理解并确认，xx公司在富金平台的注册账号使用权属于本单位主体，自注册产生的权利义务由本单位承担。" fontSize:FontSize14 color:APP_WHITE textAlignment:NSTextAlignmentCenter];
+        _titleLabel.numberOfLines = 0;
+    }
+    return _titleLabel;
 }
 
 - (UIImageView *)photographImageView {
@@ -453,7 +527,8 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 - (UILabel *)hintTitleLB {
     if (!_hintTitleLB) {
-        _hintTitleLB = [UIUtility initLabelWithText:@"轻触拍照，按住摄像" fontSize:FontSize15 color:APP_WHITE textAlignment:NSTextAlignmentCenter];
+//        _hintTitleLB = [UIUtility initLabelWithText:@"轻触拍照，按住摄像" fontSize:FontSize15 color:APP_WHITE textAlignment:NSTextAlignmentCenter];
+        _hintTitleLB = [UIUtility initLabelWithText:@"00:00:18" fontSize:FontSize15 color:APP_WHITE textAlignment:NSTextAlignmentCenter];
     }
     return _hintTitleLB;
 }

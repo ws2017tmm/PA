@@ -29,13 +29,16 @@
     if (_photographFlag) {
         _PAVideoView.PASeconds = 0; // 0秒就只能拍照
     } else {
-        _PAVideoView.PASeconds = 10;
+        _PAVideoView.PASeconds = 18;
     }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:WSRGBAColor(0, 0, 0, 0.8)] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont systemFontOfSize:17]}];
+
 //    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     [self.PAVideoView startSession];
 }
@@ -43,6 +46,9 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:UIColor.whiteColor] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor], NSFontAttributeName : [UIFont systemFontOfSize:17]}];
+
 //    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [self.PAVideoView stopSession];
 }
@@ -56,18 +62,24 @@
 
 - (void)initialData
 {
-    self.title = @"";
+    
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithimage:[UIImage imageNamed:@"white_back"] highImage:nil target:self action:@selector(back)];
+    
+    self.title = @"视频双录";
 }
 
+- (void)back {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma mark - Target Methods // 点击事件
 
 /**
  返回
  */
-- (void)goBack {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+//- (void)goBack {
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 - (void)clickFinishWithImageData:(id)imageData isVideo:(BOOL)isVideo {
     if (isVideo) {
@@ -106,8 +118,8 @@
 #pragma mark - Privater Methods // 私有方法(尽量抽取在公共类)
 
 
-- (BOOL)prefersStatusBarHidden {
-    return YES;
-}
+//- (BOOL)prefersStatusBarHidden {
+//    return YES;
+//}
 
 @end

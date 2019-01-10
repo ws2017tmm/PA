@@ -70,6 +70,7 @@
 		64E3102D21E5CB71007E3240 /* PAVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E3102B21E5CB71007E3240 /* PAVideoView.m */; };
 		64E3103021E5CB88007E3240 /* PAAVPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E3102F21E5CB88007E3240 /* PAAVPlayer.m */; };
 		64E3103521E5CBE1007E3240 /* UIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E3103421E5CBE1007E3240 /* UIUtility.m */; };
+		64E3103821E6F722007E3240 /* NSDate+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E3103721E6F722007E3240 /* NSDate+Compare.m */; };
 		D7F3CF064247BD1F123E1594 /* libPods-PAFinance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C838F243A9E9DA04757324 /* libPods-PAFinance.a */; };
 /* End PBXBuildFile section */
 
@@ -182,6 +183,8 @@
 		64E3103221E5CBE1007E3240 /* UtilsMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsMacro.h; sourceTree = "<group>"; };
 		64E3103321E5CBE1007E3240 /* UIUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUtility.h; sourceTree = "<group>"; };
 		64E3103421E5CBE1007E3240 /* UIUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUtility.m; sourceTree = "<group>"; };
+		64E3103621E6F722007E3240 /* NSDate+Compare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Compare.h"; sourceTree = "<group>"; };
+		64E3103721E6F722007E3240 /* NSDate+Compare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Compare.m"; sourceTree = "<group>"; };
 		82ED49697C46D76786AB6790 /* Pods-PAFinance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PAFinance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PAFinance/Pods-PAFinance.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -489,6 +492,8 @@
 				64BE1FDE21D782F000A38B4B /* NSString+Extension.m */,
 				64D978CA21E4777900F4B3F3 /* UIButton+Button.h */,
 				64D978CB21E4777900F4B3F3 /* UIButton+Button.m */,
+				64E3103621E6F722007E3240 /* NSDate+Compare.h */,
+				64E3103721E6F722007E3240 /* NSDate+Compare.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -618,12 +623,12 @@
 		64D978CF21E4994100F4B3F3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				64E3102E21E5CB88007E3240 /* PAAVPlayer.h */,
-				64E3102F21E5CB88007E3240 /* PAAVPlayer.m */,
-				64E3102A21E5CB71007E3240 /* PAProgressView.h */,
-				64E3102821E5CB71007E3240 /* PAProgressView.m */,
 				64E3102921E5CB71007E3240 /* PAVideoView.h */,
 				64E3102B21E5CB71007E3240 /* PAVideoView.m */,
+				64E3102A21E5CB71007E3240 /* PAProgressView.h */,
+				64E3102821E5CB71007E3240 /* PAProgressView.m */,
+				64E3102E21E5CB88007E3240 /* PAAVPlayer.h */,
+				64E3102F21E5CB88007E3240 /* PAAVPlayer.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -807,6 +812,7 @@
 				64E3102721E5CB5A007E3240 /* PAVideoController.m in Sources */,
 				641EC24121D4A9D600EB3832 /* main.m in Sources */,
 				64D978A521E3471B00F4B3F3 /* CaptureManager.m in Sources */,
+				64E3103821E6F722007E3240 /* NSDate+Compare.m in Sources */,
 				64E3102D21E5CB71007E3240 /* PAVideoView.m in Sources */,
 				641EC27321D5C84F00EB3832 /* PAHomeViewController.m in Sources */,
 				64D978A421E3471B00F4B3F3 /* CanvasView.m in Sources */,
