@@ -275,7 +275,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     
     // 判断录制时间,如果太短，需要重新录制
     long differenceSecond = [NSDate dateTimeDifferenceWithStartTime:self.startRacordDate endTime:[NSDate date]];
-    if (differenceSecond <= 4) { // 录制时间过短
+    if (differenceSecond <= 2) { // 录制时间过短
         [self recordingAgain:outputFileURL];
         return;
     }

@@ -41,7 +41,10 @@
 - (IBAction)startPlay:(UIButton *)sender {
     //创建播放器层
     AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
-    playerLayer.frame = self.videoImageView.frame;
+    playerLayer.frame = self.videoImageView.layer.frame;
+//    CGFloat y = self.videoImageView.ws_y;
+//    playerLayer.frame = CGRectMake(0, 0, self.view.ws_width, self.view.ws_height);
+
     _playerLayer = playerLayer;
     [self.view.layer addSublayer:playerLayer];
     
@@ -49,11 +52,16 @@
     
 }
 
+//- (void)viewWillLayoutSubviews {
+//    [super viewWillLayoutSubviews];
+//    _playerLayer.frame = self.videoImageView.layer.frame;;
+//}
+
 
 - (AVPlayer *)player {
     if (!_player) {
         _player = [AVPlayer playerWithPlayerItem:[self getAVPlayerItem]];
-//        [self addAVPlayerNtf:_player.currentItem];
+        [self addAVPlayerNtf:_player.currentItem];
     }
     return _player;
 }
@@ -128,8 +136,9 @@
 - (void)playbackFinished:(NSNotification *)ntf {
     NSLog(@"视频播放完成");
     [self.player seekToTime:CMTimeMake(0, 1)];
-    [self.player play];
-    //    [self.player pause];
+//    [self.player play];
+    [self.playerLayer removeFromSuperlayer];
+    [self.player pause];
 }
 
 
