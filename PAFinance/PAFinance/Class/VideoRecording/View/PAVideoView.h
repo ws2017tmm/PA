@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class PAVideoView;
 
 @protocol PAVideoViewDelegate<NSObject>
 
+@optional
 // 返回
 - (void)goBack;
 
@@ -20,6 +22,13 @@
  @param isVideo YES 影像 NO 图片
  */
 - (void)clickFinishWithImageData:(id)imageData isVideo:(BOOL)isVideo;
+
+
+/**
+ 录制完成
+ */
+- (void)videoView:(PAVideoView *)videoView completeRecording:(NSURL *)videoUrl;
+
 
 @end
 
@@ -38,7 +47,7 @@
  */
 - (void)stopSession;
 
-@property (nonatomic,assign) NSInteger PASeconds; // 录屏时长
+@property (nonatomic,assign) NSInteger paSeconds; // 录屏时长
 
 
 

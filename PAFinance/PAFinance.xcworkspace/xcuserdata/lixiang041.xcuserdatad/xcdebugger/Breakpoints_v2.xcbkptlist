@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PAFinance/Class/Home/Controller/PAHomeViewController.m"
-            timestampString = "568794656.867323"
+            filePath = "PAFinance/Class/VideoRecording/Controller/PAVideoCommitViewController.m"
+            timestampString = "568806878.827402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "-dealloc"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

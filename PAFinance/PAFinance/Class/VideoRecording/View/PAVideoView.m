@@ -37,7 +37,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 /** 进度视图 */
 @property (nonatomic,strong) PAProgressView *progressView;
 /** 完成后的视图 */
-@property (nonatomic,strong) UIView *finishView;
+//@property (nonatomic,strong) UIView *finishView;
 /** 重新拍照 */
 @property (nonatomic,strong) UIButton *afreshBtn;
 /** 确定 */
@@ -114,9 +114,10 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     [self addSubview:self.hintTitleLB];
     [self addSubview:self.focusCursor];
     
-    [self addSubview:self.finishView];
-    [self.finishView addSubview:self.afreshBtn];
-    [self.finishView addSubview:self.confirmBtn];
+//    [self addSubview:self.finishView];
+//    self.finishView.backgroundColor = UIColor.redColor;
+//    [self.finishView addSubview:self.afreshBtn];
+//    [self.finishView addSubview:self.confirmBtn];
     
 //    [self.switchCameraBtn mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.top.equalTo(self).offset(StatusBarHeight);
@@ -168,19 +169,19 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     
-    [self.finishView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self).offset(- (TabBarHeight - 9));
-        make.centerX.equalTo(self);
-        make.size.mas_offset(CGSizeMake(66+66+104, 66));
-    }];
+//    [self.finishView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(self).offset(- (TabBarHeight - 9));
+//        make.centerX.equalTo(self);
+//        make.size.mas_offset(CGSizeMake(66+66+104, 66));
+//    }];
     
-    [self.afreshBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.bottom.equalTo(self.finishView).offset(0);
-    }];
-    
-    [self.confirmBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.right.bottom.equalTo(self.finishView).offset(0);
-    }];
+//    [self.afreshBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.left.bottom.equalTo(self.finishView).offset(0);
+//    }];
+//
+//    [self.confirmBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.right.bottom.equalTo(self.finishView).offset(0);
+//    }];
     
     
 //    [self performSelector:@selector(hiddenTipsLabel) withObject:nil afterDelay:4];
@@ -264,7 +265,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 - (void)captureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections{
     NSLog(@"开始录制...");
     self.startRacordDate = [NSDate date];
-    self.seconds = self.PASeconds;
+    self.seconds = self.paSeconds;
     [self performSelector:@selector(onStartTranscribe:) withObject:fileURL afterDelay:1.0];
 }
 
@@ -274,7 +275,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     
     // 判断录制时间,如果太短，需要重新录制
     long differenceSecond = [NSDate dateTimeDifferenceWithStartTime:self.startRacordDate endTime:[NSDate date]];
-    if (differenceSecond <= 8) { // 录制时间过短
+    if (differenceSecond <= 4) { // 录制时间过短
         [self recordingAgain:outputFileURL];
         return;
     }
@@ -283,7 +284,12 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     if (self.isVideo) {
         self.saveVideoUrl = outputFileURL;
         if (!self.player) {
-            self.player = [[PAAVPlayer alloc] initWithFrame:self.bgView.bounds withShowInView:self.bgView url:outputFileURL];
+//            self.player = [[PAAVPlayer alloc] initWithFrame:self.bgView.bounds withShowInView:self url:outputFileURL];
+            if ([self.delegate respondsToSelector:@selector(videoView:completeRecording:)]) {
+                [self.delegate videoView:self completeRecording:outputFileURL];
+                self.isVideo = NO;
+            }
+            
         } else {
             if (outputFileURL) {
                 self.player.videoUrl = outputFileURL;
@@ -349,7 +355,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         self.hintTitleLB.text = [NSString stringWithFormat:@"00:00:%02zd",self.seconds];
         if (self.seconds > 0) {
             NSLog(@"---%ld", self.seconds);
-            if (self.PASeconds - self.seconds >= TimeMax && !self.isVideo) {
+            if (self.paSeconds - self.seconds >= TimeMax && !self.isVideo) {
                 self.isVideo = YES; // 长按时间超过TimeMax 表示是视频录制
                 self.progressView.timeMax = self.seconds;
                 // ?
@@ -371,9 +377,9 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 - (void)changeViewLayout {
 //    self.exitBtn.hidden = YES;
 //    self.switchCameraBtn.hidden = YES;
-    self.photographImageView.hidden = YES;
-    self.finishView.hidden = NO;
-    
+//    self.photographImageView.hidden = YES;
+//    self.finishView.hidden = NO;
+    self.hintTitleLB.text = [NSString stringWithFormat:@"00:00:%02zd",self.paSeconds];
     if (self.isVideo) {
         [self.progressView clearProgress];
     }
@@ -407,7 +413,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 //    self.exitBtn.hidden = NO;
 //    self.switchCameraBtn.hidden = NO;
     self.photographImageView.hidden = NO;
-    self.finishView.hidden = YES;
+//    self.finishView.hidden = YES;
     
     [UIView animateWithDuration:0.25 animations:^{
         [self layoutIfNeeded];
@@ -552,13 +558,13 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     return _bgView;
 }
 
-- (UIView *)finishView {
-    if (!_finishView) {
-        _finishView = [UIUtility initViewWithBackgroundColor:APP_CLEARCOLOR];
-        _finishView.hidden = YES;
-    }
-    return _finishView;
-}
+//- (UIView *)finishView {
+//    if (!_finishView) {
+//        _finishView = [UIUtility initViewWithBackgroundColor:APP_CLEARCOLOR];
+//        _finishView.hidden = YES;
+//    }
+//    return _finishView;
+//}
 
 - (UIButton *)confirmBtn {
     if (!_confirmBtn) {

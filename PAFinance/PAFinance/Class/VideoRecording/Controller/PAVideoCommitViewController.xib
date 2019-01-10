@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PAVideoCommitViewController">
+            <connections>
+                <outlet property="commitBtn" destination="CDE-OS-H4F" id="nGT-Ux-CkS"/>
+                <outlet property="rephotographBtn" destination="x6Y-84-KZh" id="LGo-rP-L6A"/>
+                <outlet property="startPlayBtn" destination="Uha-FB-qXr" id="47l-qJ-8bC"/>
+                <outlet property="tipLabel" destination="gma-s3-G4d" id="boN-HM-tpj"/>
+                <outlet property="videoImageView" destination="Nsb-vy-oHD" id="4jx-oz-RiQ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我理解并确认，xx公司在富金平台的注册账号使用权属于本单位主体，自注册产生的权利义务由本单位承担。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gma-s3-G4d">
+                    <rect key="frame" x="15" y="60" width="345" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nsb-vy-oHD">
+                    <rect key="frame" x="15" y="104" width="345" height="488"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uha-FB-qXr">
+                    <rect key="frame" x="167.5" y="313.5" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="vyz-hB-dtF"/>
+                        <constraint firstAttribute="width" constant="40" id="yfC-L8-pfm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="播放"/>
+                    <connections>
+                        <action selector="startPlay:" destination="-1" eventType="touchUpInside" id="P4A-KX-LPx"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDE-OS-H4F">
+                    <rect key="frame" x="187.5" y="617" width="187.5" height="50"/>
+                    <color key="backgroundColor" red="0.33333333329999998" green="0.4549019608" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="gtd-s7-xap"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="提交"/>
+                    <connections>
+                        <action selector="commitVideo" destination="-1" eventType="touchUpInside" id="ciG-4g-UTt"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6Y-84-KZh">
+                    <rect key="frame" x="0.0" y="617" width="187.5" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="oRU-sg-tYM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="重拍">
+                        <color key="titleColor" red="0.33333333329999998" green="0.4549019608" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="recordingAgain" destination="-1" eventType="touchUpInside" id="PRA-Ua-POV"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="gma-s3-G4d" secondAttribute="trailing" constant="15" id="0jD-y8-Nmd"/>
+                <constraint firstItem="CDE-OS-H4F" firstAttribute="leading" secondItem="x6Y-84-KZh" secondAttribute="trailing" id="3A9-ZA-Buf"/>
+                <constraint firstItem="x6Y-84-KZh" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="3jb-pw-Yb0"/>
+                <constraint firstItem="gma-s3-G4d" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="3xz-vi-vQ8"/>
+                <constraint firstItem="CDE-OS-H4F" firstAttribute="top" secondItem="Nsb-vy-oHD" secondAttribute="bottom" constant="25" id="7Dr-6l-pcA"/>
+                <constraint firstItem="Nsb-vy-oHD" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="CkY-BW-7Z7"/>
+                <constraint firstItem="gma-s3-G4d" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="40" id="L7X-bn-hfw"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="x6Y-84-KZh" secondAttribute="bottom" id="PaE-R9-YtW"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="CDE-OS-H4F" secondAttribute="bottom" id="Qi9-R8-Ago"/>
+                <constraint firstItem="Uha-FB-qXr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="SVD-Xy-y1j"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Nsb-vy-oHD" secondAttribute="trailing" constant="15" id="Wxw-3j-nMv"/>
+                <constraint firstItem="Nsb-vy-oHD" firstAttribute="top" secondItem="gma-s3-G4d" secondAttribute="bottom" constant="15" id="XBU-LP-lse"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="CDE-OS-H4F" secondAttribute="trailing" id="cTr-cg-oRZ"/>
+                <constraint firstItem="x6Y-84-KZh" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="gLJ-X5-qhV"/>
+                <constraint firstItem="Uha-FB-qXr" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="oEt-nf-bfT"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="146" y="-162"/>
+        </view>
+    </objects>
+</document>

@@ -1,22 +1,24 @@
 //
-//  PAVideoController.m
+//  PAVideoRecordController.m
 //  GHMetroSupervision
 //
 //  Created by StevenWu on 2018/1/9.
 //  Copyright © 2018年 StevenWu. All rights reserved.
 //
 
-#import "PAVideoController.h"
+#import "PAVideoRecordController.h"
 #import "PAVideoView.h"
+#import "PAVideoCommitViewController.h"
+
 
 #define WeakSelf __weak typeof(self) weakSelf = self;
 
-@interface PAVideoController ()<PAVideoViewDelegate>
+@interface PAVideoRecordController ()<PAVideoViewDelegate>
 @property (nonatomic,strong) PAVideoView *PAVideoView;
 
 @end
 
-@implementation PAVideoController
+@implementation PAVideoRecordController
 
 
 #pragma mark - View Controller LifeCyle // 生命周期的方法
@@ -27,9 +29,9 @@
     [self initialData];
     
     if (_photographFlag) {
-        _PAVideoView.PASeconds = 0; // 0秒就只能拍照
+        _PAVideoView.paSeconds = 0; // 0秒就只能拍照
     } else {
-        _PAVideoView.PASeconds = 18;
+        _PAVideoView.paSeconds = 18;
     }
 }
 
@@ -46,7 +48,8 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:UIColor.whiteColor] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:WSGrayColor(224)] forBarMetrics:UIBarMetricsDefault];
+
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor], NSFontAttributeName : [UIFont systemFontOfSize:17]}];
 
 //    [[UIApplication sharedApplication] setStatusBarHidden:NO];
@@ -98,6 +101,14 @@
 }
 
 #pragma mark - Delegate // 代理
+- (void)videoView:(PAVideoView *)videoView completeRecording:(NSURL *)videoUrl {
+    
+    PAVideoCommitViewController *vc = [[PAVideoCommitViewController alloc] init];
+    vc.videoUrl = videoUrl;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 
 #pragma mark - NetworkRequest // 网络请求

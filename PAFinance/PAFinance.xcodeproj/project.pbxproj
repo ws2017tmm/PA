@@ -65,12 +65,14 @@
 		64D978CC21E4777900F4B3F3 /* UIButton+Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D978CB21E4777900F4B3F3 /* UIButton+Button.m */; };
 		64D978D321E499EB00F4B3F3 /* PAPrepareVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D978D121E499EB00F4B3F3 /* PAPrepareVideoViewController.m */; };
 		64D978D421E499EB00F4B3F3 /* PAPrepareVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D978D221E499EB00F4B3F3 /* PAPrepareVideoViewController.xib */; };
-		64E3102721E5CB5A007E3240 /* PAVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E3102621E5CB5A007E3240 /* PAVideoController.m */; };
+		64E3102721E5CB5A007E3240 /* PAVideoRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E3102621E5CB5A007E3240 /* PAVideoRecordController.m */; };
 		64E3102C21E5CB71007E3240 /* PAProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E3102821E5CB71007E3240 /* PAProgressView.m */; };
 		64E3102D21E5CB71007E3240 /* PAVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E3102B21E5CB71007E3240 /* PAVideoView.m */; };
 		64E3103021E5CB88007E3240 /* PAAVPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E3102F21E5CB88007E3240 /* PAAVPlayer.m */; };
 		64E3103521E5CBE1007E3240 /* UIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E3103421E5CBE1007E3240 /* UIUtility.m */; };
 		64E3103821E6F722007E3240 /* NSDate+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E3103721E6F722007E3240 /* NSDate+Compare.m */; };
+		64E3103C21E72190007E3240 /* PAVideoCommitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E3103A21E72190007E3240 /* PAVideoCommitViewController.m */; };
+		64E3103D21E72190007E3240 /* PAVideoCommitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E3103B21E72190007E3240 /* PAVideoCommitViewController.xib */; };
 		D7F3CF064247BD1F123E1594 /* libPods-PAFinance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C838F243A9E9DA04757324 /* libPods-PAFinance.a */; };
 /* End PBXBuildFile section */
 
@@ -172,8 +174,8 @@
 		64D978D021E499EB00F4B3F3 /* PAPrepareVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAPrepareVideoViewController.h; sourceTree = "<group>"; };
 		64D978D121E499EB00F4B3F3 /* PAPrepareVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAPrepareVideoViewController.m; sourceTree = "<group>"; };
 		64D978D221E499EB00F4B3F3 /* PAPrepareVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PAPrepareVideoViewController.xib; sourceTree = "<group>"; };
-		64E3102521E5CB5A007E3240 /* PAVideoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAVideoController.h; sourceTree = "<group>"; };
-		64E3102621E5CB5A007E3240 /* PAVideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAVideoController.m; sourceTree = "<group>"; };
+		64E3102521E5CB5A007E3240 /* PAVideoRecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAVideoRecordController.h; sourceTree = "<group>"; };
+		64E3102621E5CB5A007E3240 /* PAVideoRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAVideoRecordController.m; sourceTree = "<group>"; };
 		64E3102821E5CB71007E3240 /* PAProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAProgressView.m; sourceTree = "<group>"; };
 		64E3102921E5CB71007E3240 /* PAVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAVideoView.h; sourceTree = "<group>"; };
 		64E3102A21E5CB71007E3240 /* PAProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAProgressView.h; sourceTree = "<group>"; };
@@ -185,6 +187,9 @@
 		64E3103421E5CBE1007E3240 /* UIUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUtility.m; sourceTree = "<group>"; };
 		64E3103621E6F722007E3240 /* NSDate+Compare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Compare.h"; sourceTree = "<group>"; };
 		64E3103721E6F722007E3240 /* NSDate+Compare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Compare.m"; sourceTree = "<group>"; };
+		64E3103921E72190007E3240 /* PAVideoCommitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAVideoCommitViewController.h; sourceTree = "<group>"; };
+		64E3103A21E72190007E3240 /* PAVideoCommitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAVideoCommitViewController.m; sourceTree = "<group>"; };
+		64E3103B21E72190007E3240 /* PAVideoCommitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PAVideoCommitViewController.xib; sourceTree = "<group>"; };
 		82ED49697C46D76786AB6790 /* Pods-PAFinance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PAFinance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PAFinance/Pods-PAFinance.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -614,8 +619,11 @@
 				64D978D021E499EB00F4B3F3 /* PAPrepareVideoViewController.h */,
 				64D978D121E499EB00F4B3F3 /* PAPrepareVideoViewController.m */,
 				64D978D221E499EB00F4B3F3 /* PAPrepareVideoViewController.xib */,
-				64E3102521E5CB5A007E3240 /* PAVideoController.h */,
-				64E3102621E5CB5A007E3240 /* PAVideoController.m */,
+				64E3102521E5CB5A007E3240 /* PAVideoRecordController.h */,
+				64E3102621E5CB5A007E3240 /* PAVideoRecordController.m */,
+				64E3103921E72190007E3240 /* PAVideoCommitViewController.h */,
+				64E3103A21E72190007E3240 /* PAVideoCommitViewController.m */,
+				64E3103B21E72190007E3240 /* PAVideoCommitViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -727,6 +735,7 @@
 			files = (
 				641EC26121D4D9F100EB3832 /* Localizable.strings in Resources */,
 				64D9789E21E3471B00F4B3F3 /* shakeHead2.png in Resources */,
+				64E3103D21E72190007E3240 /* PAVideoCommitViewController.xib in Resources */,
 				64D978A121E3471B00F4B3F3 /* shakeHead0.png in Resources */,
 				641EC25321D4CA4900EB3832 /* Login.storyboard in Resources */,
 				64BE1FD421D7612200A38B4B /* PAInfoValidationViewController.xib in Resources */,
@@ -809,7 +818,7 @@
 				64BE1FDF21D782F000A38B4B /* NSString+Extension.m in Sources */,
 				64BE1FBD21D60F8C00A38B4B /* UITextField+placeholder.m in Sources */,
 				64D978A621E3471B00F4B3F3 /* IFlyFaceResultKeys.m in Sources */,
-				64E3102721E5CB5A007E3240 /* PAVideoController.m in Sources */,
+				64E3102721E5CB5A007E3240 /* PAVideoRecordController.m in Sources */,
 				641EC24121D4A9D600EB3832 /* main.m in Sources */,
 				64D978A521E3471B00F4B3F3 /* CaptureManager.m in Sources */,
 				64E3103821E6F722007E3240 /* NSDate+Compare.m in Sources */,
@@ -832,6 +841,7 @@
 				641EC21D21D4A0C100EB3832 /* AppDelegate.m in Sources */,
 				64E3102C21E5CB71007E3240 /* PAProgressView.m in Sources */,
 				641EC25021D4C19700EB3832 /* PALoginViewController.m in Sources */,
+				64E3103C21E72190007E3240 /* PAVideoCommitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 
 #import "PAPrepareVideoViewController.h"
 #import "PANextStepView.h"
-#import "PAVideoController.h"
+#import "PAVideoRecordController.h"
 
 @interface PAPrepareVideoViewController ()
 
@@ -79,7 +79,7 @@
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"视频录制会产生较大流量，请尽量使用WIFI" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *comfirmAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-        PAVideoController *videoC = [[PAVideoController alloc] init];
+        PAVideoRecordController *videoC = [[PAVideoRecordController alloc] init];
         //    [self presentViewController:videoC animated:YES completion:nil];
         [self.navigationController pushViewController:videoC animated:YES];
     }];
