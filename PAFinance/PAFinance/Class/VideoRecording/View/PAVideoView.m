@@ -346,6 +346,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 - (void)onStartTranscribe:(NSURL *)fileURL {
     if ([self.captureMovieFileOutput isRecording]) {
         -- self.seconds;
+        self.hintTitleLB.text = [NSString stringWithFormat:@"00:00:%02zd",self.seconds];
         if (self.seconds > 0) {
             NSLog(@"---%ld", self.seconds);
             if (self.PASeconds - self.seconds >= TimeMax && !self.isVideo) {
