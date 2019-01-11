@@ -76,8 +76,9 @@
 
 - (IBAction)startRecording {
     
-    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"视频录制会产生较大流量，请尽量使用WIFI" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *comfirmAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"kindly reminder", "温馨提示") message:NSLocalizedString(@"Video recording will generate large traffic, please use WIFI as much as possible.", "视频录制会产生较大流量，请尽量使用WIFI") preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *comfirmAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"confirm", "确认") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         PAVideoRecordController *videoC = [[PAVideoRecordController alloc] init];
         //    [self presentViewController:videoC animated:YES completion:nil];

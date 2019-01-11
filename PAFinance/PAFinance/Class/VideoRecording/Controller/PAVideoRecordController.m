@@ -68,7 +68,7 @@
     
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithimage:[UIImage imageNamed:@"white_back"] highImage:nil target:self action:@selector(back)];
     
-    self.title = @"视频双录";
+    self.title = NSLocalizedString(@"Video dual recording", "视频双录");
 }
 
 - (void)back {

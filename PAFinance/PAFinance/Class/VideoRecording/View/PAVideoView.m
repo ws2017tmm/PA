@@ -305,7 +305,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 #pragma mark - 录制时间太短，重新录制
 - (void)recordingAgain:(NSURL *)url {
-    [SVProgressHUD showInfoWithStatus:@"录制时间太短，请重新录制"];
+    [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"The recording time is too short. Please re-record it.", "录制时间太短，请重新录制")];
     
     [[NSFileManager defaultManager] removeItemAtURL:url error:nil];
     self.isVideo = NO;
@@ -510,7 +510,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 - (UILabel *)tipLabel {
     if (_tipLabel == nil) {
-        _tipLabel = [UIUtility initLabelWithText:@"录制时，请将头部放在一下框内，并用普通话大声朗读一下文字。" fontSize:FontSize12 color:APP_GRAY textAlignment:NSTextAlignmentCenter];
+        _tipLabel = [UIUtility initLabelWithText:NSLocalizedString(@"When recording, please put your head in a box and read the text aloud in Putonghua.", "录制时，请将头部放在一下框内，并用普通话大声朗读一下文字。") fontSize:FontSize12 color:APP_GRAY textAlignment:NSTextAlignmentCenter];
         _tipLabel.numberOfLines = 0;
     }
     return _tipLabel;
@@ -518,7 +518,11 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 - (UILabel *)titleLabel {
     if (_titleLabel == nil) {
-        _titleLabel = [UIUtility initLabelWithText:@"我理解并确认，xx公司在富金平台的注册账号使用权属于本单位主体，自注册产生的权利义务由本单位承担。" fontSize:FontSize14 color:APP_WHITE textAlignment:NSTextAlignmentCenter];
+        PAUserModel *userModel = [PAUserModel sharedUserModel];
+#warning 待修改
+        NSString *text = [NSString stringWithFormat:@"%@%@%@",NSLocalizedString(@"I understand and confirm", "我理解并确认"),userModel.companyName,NSLocalizedString(@"the right to use registered accounts on the platform belongs to the entity, and the rights and obligations arising from self-registration shall be borne by the entity.", "在富金平台的注册账号使用权属于本单位主体，自注册产生的权利义务由本单位承担。")];
+        
+        _titleLabel = [UIUtility initLabelWithText:text fontSize:FontSize14 color:APP_WHITE textAlignment:NSTextAlignmentCenter];
         _titleLabel.numberOfLines = 0;
     }
     return _titleLabel;

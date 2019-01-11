@@ -36,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"视频双录";
+    self.title = NSLocalizedString(@"Video dual recording", "视频双录");
     self.videoImageView.image = [self videoHandlePhoto:self.videoUrl];
     self.videoImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.videoImageView.clipsToBounds = YES;
@@ -109,7 +109,7 @@
         [self.navigationController pushViewController:vc animated:YES];
         
     } failure:^(NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"上传失败，请重新上传"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Upload failed, please re-upload", "上传失败，请重新上传")];
     }];
     
     
