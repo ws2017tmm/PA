@@ -10,6 +10,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <AVFoundation/AVFoundation.h>
 #import <PPNetworkHelper.h>
+#import "PAValidationCompletedController.h"
 
 @interface PAVideoCommitViewController ()
 
@@ -101,10 +102,14 @@
     NSString *filePath = [[self.videoUrl absoluteString] stringByReplacingOccurrencesOfString:@"file://" withString:@""];
     [PPNetworkHelper uploadFileWithURL:@"videoUrl" parameters:parameters name:@"file" filePath:filePath progress:^(NSProgress *progress) {
         
+        
     } success:^(id responseObject) {
         
-    } failure:^(NSError *error) {
+        PAValidationCompletedController *vc = [[PAValidationCompletedController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
         
+    } failure:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"上传失败，请重新上传"];
     }];
     
     
