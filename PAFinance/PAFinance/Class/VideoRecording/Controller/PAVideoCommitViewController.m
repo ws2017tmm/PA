@@ -24,6 +24,7 @@
 
 @property (nonatomic,strong) AVPlayer *player;//播放器对象
 @property (nonatomic,weak) AVPlayerLayer *playerLayer;
+@property (nonatomic,assign) BOOL isPlaying;
 
 @end
 
@@ -34,28 +35,30 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"视频双录";
     self.videoImageView.image = [self videoHandlePhoto:self.videoUrl];
-//    self.videoImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.videoImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.videoImageView.clipsToBounds = YES;
+    self.videoImageView.hidden = YES;
+    
+    //创建播放器层
+    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+    playerLayer.frame = self.videoImageView.layer.frame;
+    playerLayer.videoGravity =AVLayerVideoGravityResizeAspectFill;
+    [self.view.layer insertSublayer:playerLayer atIndex:0];
+    _playerLayer = playerLayer;
+    
 }
 
 
 - (IBAction)startPlay:(UIButton *)sender {
-    //创建播放器层
-    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
-    playerLayer.frame = self.videoImageView.layer.frame;
-//    CGFloat y = self.videoImageView.ws_y;
-//    playerLayer.frame = CGRectMake(0, 0, self.view.ws_width, self.view.ws_height);
-
-    _playerLayer = playerLayer;
-    [self.view.layer addSublayer:playerLayer];
-    
     [self.player play];
-    
+    self.isPlaying = YES;
+    self.startPlayBtn.hidden = YES;
 }
 
-//- (void)viewWillLayoutSubviews {
-//    [super viewWillLayoutSubviews];
-//    _playerLayer.frame = self.videoImageView.layer.frame;;
-//}
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    _playerLayer.frame = self.videoImageView.layer.frame;
+}
 
 
 - (AVPlayer *)player {
@@ -102,6 +105,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+
 - (void)stopPlayer {
     if (self.player.rate == 1) {
         [self.player pause];//如果在播放状态就停止
@@ -133,16 +137,31 @@
     }
 }
 
+#pragma mark - 播放完毕
 - (void)playbackFinished:(NSNotification *)ntf {
     NSLog(@"视频播放完成");
     [self.player seekToTime:CMTimeMake(0, 1)];
 //    [self.player play];
-    [self.playerLayer removeFromSuperlayer];
+    
     [self.player pause];
+    self.startPlayBtn.hidden = NO;
+    
 }
 
 
-
+#pragma mark - 触摸播放图层
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = touches.anyObject;
+    CGPoint point = [touch locationInView:self.view];
+    point = [self.videoImageView.layer convertPoint:point fromLayer:self.view.layer];
+    if ([self.videoImageView.layer containsPoint:point]) {
+        if (self.isPlaying) {
+            [self.player pause];
+//            self.videoImageView.hidden = NO;
+            self.startPlayBtn.hidden = NO;
+        }
+    }
+}
 
 
 
