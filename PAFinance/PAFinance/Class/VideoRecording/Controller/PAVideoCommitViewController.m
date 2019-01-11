@@ -9,6 +9,7 @@
 #import "PAVideoCommitViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <AVFoundation/AVFoundation.h>
+#import <PPNetworkHelper.h>
 
 @interface PAVideoCommitViewController ()
 
@@ -94,7 +95,18 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+// 上传视频
 - (IBAction)commitVideo {
+    NSDictionary *parameters = @{};
+    NSString *filePath = [[self.videoUrl absoluteString] stringByReplacingOccurrencesOfString:@"file://" withString:@""];
+    [PPNetworkHelper uploadFileWithURL:@"videoUrl" parameters:parameters name:@"file" filePath:filePath progress:^(NSProgress *progress) {
+        
+    } success:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
     
 }
 
