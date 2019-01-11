@@ -30,6 +30,7 @@
 
 @implementation PAVideoCommitViewController
 
+#pragma mark -生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -48,19 +49,12 @@
     
 }
 
-
-- (IBAction)startPlay:(UIButton *)sender {
-    [self.player play];
-    self.isPlaying = YES;
-    self.startPlayBtn.hidden = YES;
-}
-
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     _playerLayer.frame = self.videoImageView.layer.frame;
 }
 
-
+#pragma mark - 创建播放器
 - (AVPlayer *)player {
     if (!_player) {
         _player = [AVPlayer playerWithPlayerItem:[self getAVPlayerItem]];
@@ -74,21 +68,38 @@
     return playerItem;
 }
 
-//- (void)setVideoUrl:(NSURL *)videoUrl {
-//    _videoUrl = videoUrl;
-//    [self removeAvPlayerNtf];
-//    [self nextPlayer];
-//}
-//
-//- (void)nextPlayer {
-//    [self.player seekToTime:CMTimeMakeWithSeconds(0, _player.currentItem.duration.timescale)];
-//    [self.player replaceCurrentItemWithPlayerItem:[self getAVPlayerItem]];
-//    [self addAVPlayerNtf:self.player.currentItem];
-//    if (self.player.rate == 0) {
-//        [self.player play];
-//    }
-//}
 
+#pragma mark - 触摸播放图层
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = touches.anyObject;
+    CGPoint point = [touch locationInView:self.view];
+    point = [self.videoImageView.layer convertPoint:point fromLayer:self.view.layer];
+    if ([self.videoImageView.layer containsPoint:point]) {
+        if (self.isPlaying) {
+            [self.player pause];
+//            self.videoImageView.hidden = NO;
+            self.startPlayBtn.hidden = NO;
+        }
+    }
+}
+
+#pragma mark - 按钮的点事件
+- (IBAction)startPlay:(UIButton *)sender {
+    [self.player play];
+    self.isPlaying = YES;
+    self.startPlayBtn.hidden = YES;
+}
+
+- (IBAction)recordingAgain {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)commitVideo {
+    
+}
+
+
+#pragma mark -播放相关
 - (void)addAVPlayerNtf:(AVPlayerItem *)playerItem {
     //监控状态属性
     [playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
@@ -105,6 +116,20 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+//- (void)setVideoUrl:(NSURL *)videoUrl {
+//    _videoUrl = videoUrl;
+//    [self removeAvPlayerNtf];
+//    [self nextPlayer];
+//}
+//
+//- (void)nextPlayer {
+//    [self.player seekToTime:CMTimeMakeWithSeconds(0, _player.currentItem.duration.timescale)];
+//    [self.player replaceCurrentItemWithPlayerItem:[self getAVPlayerItem]];
+//    [self addAVPlayerNtf:self.player.currentItem];
+//    if (self.player.rate == 0) {
+//        [self.player play];
+//    }
+//}
 
 - (void)stopPlayer {
     if (self.player.rate == 1) {
@@ -141,41 +166,12 @@
 - (void)playbackFinished:(NSNotification *)ntf {
     NSLog(@"视频播放完成");
     [self.player seekToTime:CMTimeMake(0, 1)];
-//    [self.player play];
+    //    [self.player play];
     
     [self.player pause];
     self.startPlayBtn.hidden = NO;
     
 }
-
-
-#pragma mark - 触摸播放图层
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = touches.anyObject;
-    CGPoint point = [touch locationInView:self.view];
-    point = [self.videoImageView.layer convertPoint:point fromLayer:self.view.layer];
-    if ([self.videoImageView.layer containsPoint:point]) {
-        if (self.isPlaying) {
-            [self.player pause];
-//            self.videoImageView.hidden = NO;
-            self.startPlayBtn.hidden = NO;
-        }
-    }
-}
-
-
-
-
-
-- (IBAction)recordingAgain {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (IBAction)commitVideo {
-    
-}
-
-
 
 - (UIImage *)videoHandlePhoto:(NSURL *)url {
     AVURLAsset *urlSet = [AVURLAsset assetWithURL:url];
@@ -199,10 +195,6 @@
     }
     
     return image;
-    //[UIImage imageWithCGImage:cgImage];
-    
-    //    [[NSFileManager defaultManager] removeItemAtURL:url error:nil];
-    
 }
 
 
