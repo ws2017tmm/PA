@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PALoginViewController : UIViewController
 
-@property (assign, nonatomic, getter=isRootVC) BOOL rootVC;
+//@property (assign, nonatomic, getter=isRootVC) BOOL rootVC;
 
 @end
 

@@ -117,7 +117,7 @@
 
 - (IBAction)login {
     PALoginViewController *vc = PAStoryboardInitialVC(@"Login");
-    vc.rootVC = NO;
+//    vc.rootVC = NO;
     [self presentViewController:vc animated:YES completion:nil];
 }
 

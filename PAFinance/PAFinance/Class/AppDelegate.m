@@ -16,7 +16,6 @@
 #define IFLY_APPID @"5c331496"
 
 //#define kUserID @"kUserID"
-#define kUserName @"kUserName"
 
 @interface AppDelegate ()
 
@@ -27,24 +26,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // 进入首页
-    // 判断用户是否登录过
-    NSString *userName = [PAUserDefaults objectForKey:kUserName];
-    if (userName.length >= 0) { // 自动登录
-        [self automaticLogon];
-        
-    } else { // 直接到登录界面
-        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        
-        PALoginViewController *vc = PAStoryboardInitialVC(@"Login");
-        vc.rootVC = YES;
-        self.window.rootViewController = vc;
-        [self.window makeKeyAndVisible];
-    }
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    PALoginViewController *vc = PAStoryboardInitialVC(@"Login");
+//    vc.rootVC = YES;
+    self.window.rootViewController = vc;
+    [self.window makeKeyAndVisible];
     
     //配置文件
     [self makeConfiguration];
     
+    [self automaticLogon];
     return YES;
 }
 
@@ -104,14 +95,15 @@
 - (void)automaticLogon {
     
     // 取出用户名
-    NSString *userName = [PAUserDefaults objectForKey:kUserName];
-    userName = @"18956331648";
+//    NSString *userName = [PAUserDefaults objectForKey:kUserName];
+    NSString *userName = @"18956331648";
     // 请求成功
     NSDictionary *parameters = @{
-                                 @"userName" : userName
+                                 @"userName" : userName,
+                                 @"token" : @"11wcsvdfedcds"
                                  };
     // 自动登录
-    [PPNetworkHelper POST:@"login" parameters:parameters success:^(id responseObject) {// 自动登录成功
+    [PPNetworkHelper POST:@"https://103.28.215.253:10489/dockToApp/api/css/customer/faceRecognitionDataReturn" parameters:parameters success:^(id responseObject) {// 自动登录成功
         // 做一些事情(比如配置一些...)
         
         

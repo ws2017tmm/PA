@@ -11,6 +11,8 @@
 #import "WSLoginTextField.h"
 #import <PPNetworkHelper.h>
 
+#define kUserName @"kUserName"
+
 @interface PALoginViewController ()<UITextFieldDelegate>
 
 
@@ -42,11 +44,11 @@
     
     self.bgImageView.image = [UIImage imageWithColor:WSHexColor(@"0x225bc7")];
     
-    if (self.isRootVC) {
-        self.backButton.hidden = YES;
-    } else {
-        self.backButton.hidden = NO;
-    }
+//    if (self.isRootVC) {
+//        self.backButton.hidden = YES;
+//    } else {
+//        self.backButton.hidden = NO;
+//    }
     
     self.titleLabel.text = NSLocalizedString(@"Supply Chain Finance", "供应链金融");
     [self.forgotPasswordBtn setTitle:NSLocalizedString(@"Forget password", "忘记密码") forState:UIControlStateNormal];
@@ -54,6 +56,12 @@
     self.loginButton.layer.cornerRadius = 3;
     self.loginButton.clipsToBounds = YES;
     
+    
+    // 判断用户是否登录过
+    NSString *userName = [PAUserDefaults objectForKey:kUserName];
+    if (userName.length > 0) {
+        self.phoneTextField.text = userName;
+    }
     self.phoneTextField.placeholder = NSLocalizedString(@"phone number", "手机号码");
     self.phoneTextField.textFieldStateChanged = ^(BOOL isSelected) {
         if (isSelected) {
@@ -93,6 +101,7 @@
         return;
     }
     
+    
     NSDictionary *parameters = @{
                            @"userName" : self.phoneTextField.text,
                            @"password" : self.passwordTextField.text
@@ -115,12 +124,12 @@
 
 
 - (IBAction)dismiss {
-    if (self.isRootVC) {
+//    if (self.isRootVC) {
         UITabBarController *tabVC = PAStoryboardInitialVC(@"Main");
         [UIApplication sharedApplication].keyWindow.rootViewController = tabVC;
-    } else {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
+//    } else {
+//        [self dismissViewControllerAnimated:YES completion:nil];
+//    }
 }
 
 

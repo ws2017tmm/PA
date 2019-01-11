@@ -18,6 +18,8 @@
 		641EC26A21D5B4E800EB3832 /* PANavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 641EC26921D5B4E800EB3832 /* PANavigationController.m */; };
 		641EC26D21D5B6C900EB3832 /* PATabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 641EC26C21D5B6C900EB3832 /* PATabBarController.m */; };
 		641EC27321D5C84F00EB3832 /* PAHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 641EC27221D5C84F00EB3832 /* PAHomeViewController.m */; };
+		64A163B021E86CA00067C7C6 /* PAValidationCompletedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A163AE21E86CA00067C7C6 /* PAValidationCompletedController.m */; };
+		64A163B121E86CA00067C7C6 /* PAValidationCompletedController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A163AF21E86CA00067C7C6 /* PAValidationCompletedController.xib */; };
 		64BE1FAD21D5F5B600A38B4B /* WSLoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BE1FAB21D5F5B600A38B4B /* WSLoginTextField.m */; };
 		64BE1FB021D60E6D00A38B4B /* PAUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BE1FAF21D60E6D00A38B4B /* PAUserModel.m */; };
 		64BE1FBD21D60F8C00A38B4B /* UITextField+placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BE1FB721D60F8C00A38B4B /* UITextField+placeholder.m */; };
@@ -100,6 +102,9 @@
 		641EC26C21D5B6C900EB3832 /* PATabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PATabBarController.m; sourceTree = "<group>"; };
 		641EC27121D5C84F00EB3832 /* PAHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAHomeViewController.h; sourceTree = "<group>"; };
 		641EC27221D5C84F00EB3832 /* PAHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAHomeViewController.m; sourceTree = "<group>"; };
+		64A163AD21E86CA00067C7C6 /* PAValidationCompletedController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAValidationCompletedController.h; sourceTree = "<group>"; };
+		64A163AE21E86CA00067C7C6 /* PAValidationCompletedController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAValidationCompletedController.m; sourceTree = "<group>"; };
+		64A163AF21E86CA00067C7C6 /* PAValidationCompletedController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PAValidationCompletedController.xib; sourceTree = "<group>"; };
 		64BE1FA321D5EDC800A38B4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		64BE1FAB21D5F5B600A38B4B /* WSLoginTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSLoginTextField.m; sourceTree = "<group>"; };
 		64BE1FAC21D5F5B600A38B4B /* WSLoginTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSLoginTextField.h; sourceTree = "<group>"; };
@@ -315,6 +320,9 @@
 				64BE1FD021D7612200A38B4B /* PAInfoValidationViewController.h */,
 				64BE1FD121D7612200A38B4B /* PAInfoValidationViewController.m */,
 				64BE1FD221D7612200A38B4B /* PAInfoValidationViewController.xib */,
+				64A163AD21E86CA00067C7C6 /* PAValidationCompletedController.h */,
+				64A163AE21E86CA00067C7C6 /* PAValidationCompletedController.m */,
+				64A163AF21E86CA00067C7C6 /* PAValidationCompletedController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -742,6 +750,7 @@
 				64BE1FD921D7695B00A38B4B /* PANextStepView.xib in Resources */,
 				641EC22821D4A0C200EB3832 /* LaunchScreen.storyboard in Resources */,
 				641EC22521D4A0C200EB3832 /* Assets.xcassets in Resources */,
+				64A163B121E86CA00067C7C6 /* PAValidationCompletedController.xib in Resources */,
 				64D978D421E499EB00F4B3F3 /* PAPrepareVideoViewController.xib in Resources */,
 				64D978A221E3471B00F4B3F3 /* openMouth0.png in Resources */,
 				64D9789F21E3471B00F4B3F3 /* shakeHead3.png in Resources */,
@@ -822,6 +831,7 @@
 				641EC24121D4A9D600EB3832 /* main.m in Sources */,
 				64D978A521E3471B00F4B3F3 /* CaptureManager.m in Sources */,
 				64E3103821E6F722007E3240 /* NSDate+Compare.m in Sources */,
+				64A163B021E86CA00067C7C6 /* PAValidationCompletedController.m in Sources */,
 				64E3102D21E5CB71007E3240 /* PAVideoView.m in Sources */,
 				641EC27321D5C84F00EB3832 /* PAHomeViewController.m in Sources */,
 				64D978A421E3471B00F4B3F3 /* CanvasView.m in Sources */,
