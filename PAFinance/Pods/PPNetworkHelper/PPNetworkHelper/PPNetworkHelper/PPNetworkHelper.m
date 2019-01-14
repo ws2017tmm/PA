@@ -327,6 +327,12 @@ static AFHTTPSessionManager *_sessionManager;
 + (void)initialize {
     _sessionManager = [AFHTTPSessionManager manager];
     _sessionManager.requestSerializer.timeoutInterval = 30.f;
+    
+    // 绕过证书
+    _sessionManager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+    _sessionManager.securityPolicy.allowInvalidCertificates = YES;
+    [_sessionManager.securityPolicy setValidatesDomainName:NO];
+    
     _sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/plain", @"text/javascript", @"text/xml", @"image/*", nil];
     // 打开状态栏的等待菊花
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;

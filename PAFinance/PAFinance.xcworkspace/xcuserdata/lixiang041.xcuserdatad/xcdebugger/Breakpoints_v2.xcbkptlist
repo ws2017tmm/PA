@@ -19,44 +19,76 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PAFinance/Class/FaceRecognition/FaceDetector/FaceStreamDetectorViewController.m"
-            timestampString = "568883546.869143"
+            filePath = "PAFinance/Class/VideoRecording/Controller/PAVideoCommitViewController.m"
+            timestampString = "569126221.887078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "691"
-            endingLineNumber = "691"
-            landmarkName = "-didClickUpPhoto"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-commitVideo"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PAFinance/Class/VideoRecording/Controller/PAVideoCommitViewController.m"
+            timestampString = "569126221.8871779"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "-commitVideo"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PAFinance/Class/VideoRecording/Controller/PAVideoCommitViewController.m"
+            timestampString = "569126221.887241"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "-commitVideo"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[FaceStreamDetectorViewController didClickUpPhoto]"
+                  symbolName = "-[PAVideoCommitViewController commitVideo]"
                   moduleName = "PAFinance"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lixiang041/Desktop/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%ABdemo/%E9%87%91%E8%9E%8D%E5%A3%B9%E8%B4%A6%E9%80%9A/PAFinance/PAFinance/Class/FaceRecognition/FaceDetector/FaceStreamDetectorViewController.m"
-                  timestampString = "568883547.0538141"
+                  urlString = "file:///Users/lixiang041/Desktop/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%ABdemo/%E9%87%91%E8%9E%8D%E5%A3%B9%E8%B4%A6%E9%80%9A/PAFinance/PAFinance/Class/VideoRecording/Controller/PAVideoCommitViewController.m"
+                  timestampString = "569126222.004814"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "691"
-                  endingLineNumber = "691"
-                  offsetFromSymbolStart = "176">
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "289">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__51-[FaceStreamDetectorViewController didClickUpPhoto]_block_invoke"
+                  symbolName = "__42-[PAVideoCommitViewController commitVideo]_block_invoke"
                   moduleName = "PAFinance"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lixiang041/Desktop/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%ABdemo/%E9%87%91%E8%9E%8D%E5%A3%B9%E8%B4%A6%E9%80%9A/PAFinance/PAFinance/Class/FaceRecognition/FaceDetector/FaceStreamDetectorViewController.m"
-                  timestampString = "568883547.056211"
+                  urlString = "file:///Users/lixiang041/Desktop/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%ABdemo/%E9%87%91%E8%9E%8D%E5%A3%B9%E8%B4%A6%E9%80%9A/PAFinance/PAFinance/Class/VideoRecording/Controller/PAVideoCommitViewController.m"
+                  timestampString = "569126222.008826"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "693"
-                  endingLineNumber = "693"
-                  offsetFromSymbolStart = "56">
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "47">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -67,13 +99,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PAFinance/Class/FaceRecognition/FaceDetector/FaceStreamDetectorViewController.m"
-            timestampString = "568883546.8695329"
+            filePath = "PAFinance/Class/VideoRecording/Controller/PAVideoCommitViewController.m"
+            timestampString = "569126221.887292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "693"
-            endingLineNumber = "693"
-            landmarkName = "-didClickUpPhoto"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "-commitVideo"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -83,13 +115,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PAFinance/Class/FaceRecognition/FaceDetector/FaceStreamDetectorViewController.m"
-            timestampString = "568883546.8696131"
+            filePath = "Pods/PPNetworkHelper/PPNetworkHelper/PPNetworkHelper/PPNetworkHelper.m"
+            timestampString = "569126221.887354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "697"
-            endingLineNumber = "697"
-            landmarkName = "-didClickUpPhoto"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "+uploadFileWithURL:parameters:name:filePath:progress:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -99,13 +131,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PAFinance/Class/FaceRecognition/FaceDetector/FaceStreamDetectorViewController.m"
-            timestampString = "568883546.869687"
+            filePath = "Pods/PPNetworkHelper/PPNetworkHelper/PPNetworkHelper/PPNetworkHelper.m"
+            timestampString = "569126221.887412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "703"
-            endingLineNumber = "703"
-            landmarkName = "-didClickUpPhoto"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "+uploadFileWithURL:parameters:name:filePath:progress:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -115,13 +147,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PAFinance/Class/AppDelegate.m"
-            timestampString = "568883546.869773"
+            filePath = "Pods/PPNetworkHelper/PPNetworkHelper/PPNetworkHelper/PPNetworkHelper.m"
+            timestampString = "569126221.887463"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "-automaticLogon"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "+uploadFileWithURL:parameters:name:filePath:progress:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -131,60 +163,59 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PAFinance/Class/AppDelegate.m"
-            timestampString = "568883546.869963"
+            filePath = "Pods/PPNetworkHelper/PPNetworkHelper/PPNetworkHelper/PPNetworkHelper.m"
+            timestampString = "569126221.887512"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "-automaticLogon"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PAFinance/Class/AppDelegate.m"
-            timestampString = "568883546.870018"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "-automaticLogon"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "+uploadFileWithURL:parameters:name:filePath:progress:success:failure:"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[AppDelegate automaticLogon]"
+                  symbolName = "__87+[PPNetworkHelper uploadFileWithURL:parameters:name:filePath:progress:success:failure:]_block_invoke.98"
                   moduleName = "PAFinance"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lixiang041/Desktop/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%ABdemo/%E9%87%91%E8%9E%8D%E5%A3%B9%E8%B4%A6%E9%80%9A/PAFinance/PAFinance/Class/AppDelegate.m"
-                  timestampString = "568883547.083523"
+                  urlString = "file:///Users/lixiang041/Desktop/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%ABdemo/%E9%87%91%E8%9E%8D%E5%A3%B9%E8%B4%A6%E9%80%9A/PAFinance/Pods/PPNetworkHelper/PPNetworkHelper/PPNetworkHelper/PPNetworkHelper.m"
+                  timestampString = "569126222.050229"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
-                  offsetFromSymbolStart = "220">
+                  startingLineNumber = "192"
+                  endingLineNumber = "192"
+                  offsetFromSymbolStart = "62">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__29-[AppDelegate automaticLogon]_block_invoke"
+                  symbolName = "__87+[PPNetworkHelper uploadFileWithURL:parameters:name:filePath:progress:success:failure:]_block_invoke_2"
                   moduleName = "PAFinance"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lixiang041/Desktop/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%ABdemo/%E9%87%91%E8%9E%8D%E5%A3%B9%E8%B4%A6%E9%80%9A/PAFinance/PAFinance/Class/AppDelegate.m"
-                  timestampString = "568883547.085357"
+                  urlString = "file:///Users/lixiang041/Desktop/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%ABdemo/%E9%87%91%E8%9E%8D%E5%A3%B9%E8%B4%A6%E9%80%9A/PAFinance/Pods/PPNetworkHelper/PPNetworkHelper/PPNetworkHelper/PPNetworkHelper.m"
+                  timestampString = "569126222.053641"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "56">
+                  startingLineNumber = "192"
+                  endingLineNumber = "192"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.100"
+                  moduleName = "PAFinance"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lixiang041/Desktop/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%ABdemo/%E9%87%91%E8%9E%8D%E5%A3%B9%E8%B4%A6%E9%80%9A/PAFinance/Pods/PPNetworkHelper/PPNetworkHelper/PPNetworkHelper/PPNetworkHelper.m"
+                  timestampString = "569126222.057163"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "192"
+                  endingLineNumber = "192"
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>

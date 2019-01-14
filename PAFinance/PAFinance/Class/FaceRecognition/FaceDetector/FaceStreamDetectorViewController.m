@@ -688,20 +688,19 @@
 -(void)didClickUpPhoto
 {
     NSDictionary *parameters = @{@"token" : PAToken};
-    [PPNetworkHelper uploadImagesWithURL:@"https://103.28.215.253:10489/dockToApp/api/css/customer/uploadPic" parameters:parameters name:@"file" images:@[_imageView.image] fileNames:nil imageScale:1.0 imageType:nil progress:^(NSProgress *progress) {
+    [PPNetworkHelper uploadImagesWithURL:@"https://103.28.215.253:10489/dockToApp/api/ccs/customer/uploadPic" parameters:parameters name:@"file" images:@[_imageView.image] fileNames:nil imageScale:1.0 imageType:nil progress:^(NSProgress *progress) {
         // 进度
         float completed = progress.completedUnitCount / progress.totalUnitCount;
         [SVProgressHUD showProgress:completed status:NSLocalizedString(@"Uploading...", "正在上传...")];
     } success:^(id responseObject) {
         // 上传成功
-        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Upload success", "上传成功")];
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Upload success", "上传成功")];
         // 去视频录制界面
         [self.navigationController pushViewController:[PAPrepareVideoViewController new] animated:YES];
         [self didClickPhotoAgain];
     } failure:^(NSError *error) {
         // 上传失败
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Upload failed, please re-upload", "上传失败，请重新上传")];
-        [self.navigationController pushViewController:[PAPrepareVideoViewController new] animated:YES];
         [self didClickPhotoAgain];
         
     }];

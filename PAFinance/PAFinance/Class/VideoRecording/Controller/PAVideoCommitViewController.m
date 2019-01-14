@@ -12,6 +12,8 @@
 #import <PPNetworkHelper.h>
 #import "PAValidationCompletedController.h"
 
+#define PAToken @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwYXlsb2FkIjoie1wiY3VycmVudFBhZ2VcIjpudWxsLFwicGFnZVNpemVcIjpudWxsLFwidG90YWxQYWdlc1wiOjAsXCJjb3VudFwiOjAsXCJ0b3RhbE51bVwiOjAsXCJkYXRhXCI6bnVsbCxcInRva2VuSWRcIjpudWxsLFwiY2xpZW50SXBcIjpudWxsLFwicmVxdWVzdElkXCI6bnVsbCxcInNlc3Npb25JZFwiOm51bGwsXCJvcHJhdGlvbk9ialwiOm51bGwsXCJidXNpbmVzc1R5cGVcIjpudWxsLFwia2V5XCI6bnVsbCxcInNpZ25LZXlcIjpudWxsLFwiY3VzdG9tZXJJZFwiOm51bGwsXCJjdXN0b21lck5vXCI6bnVsbCxcImN1c3RvbWVyVHlwZVwiOm51bGwsXCJjdXN0b21lck5hbWVcIjpudWxsLFwiY3VzdG9tZXJOYW1lRW5cIjpudWxsLFwiY3VzdG9tZXJPcmdhblR5cGVcIjpudWxsLFwicmVnaXN0ZXJlZENhcGl0YWxDdXJyZW5jeVwiOm51bGwsXCJyZWdpc3RlcmVkQ2FwaXRhbEFtb3VudFwiOm51bGwsXCJlbnRlcnByaXNlVHlwZVwiOm51bGwsXCJyZXNpZGVuY2VcIjpudWxsLFwibGVnYWxSZXByZXNlbnRhdGl2ZU5hbWVcIjpudWxsLFwibGVnYWxSZXByZXNlbnRhdGl2ZUlkVHlwZVwiOm51bGwsXCJsZWdhbFJlcHJlc2VudGF0aXZlSWRcIjpudWxsLFwic2V0dXBEYXRlXCI6bnVsbCxcIm9wZW5CYW5rXCI6bnVsbCxcIm9wZW5CYW5rQWNjb3VudE5vXCI6bnVsbCxcImNvbnRhY3RBZGRyZXNzXCI6bnVsbCxcImNvbnRhY3ROYW1lXCI6bnVsbCxcImNvbnRhY3RQaG9uZVwiOm51bGwsXCJjb250YWN0RW1haWxcIjpudWxsLFwiY29udGFjdE90aGVyXCI6bnVsbCxcInJlbWFya1wiOm51bGwsXCJpbmR1c3RyeVR5cGVcIjpudWxsLFwib3JnYW5pemF0aW9uVHlwZVwiOm51bGwsXCJjZXJ0aWZpY2F0ZUltYWdlSWRcIjpudWxsLFwicmVnaXN0ZXJGbGFnXCI6bnVsbCxcInF1ZXJ5Q3VzdG9tZXJUeXBlXCI6bnVsbCxcInN0YXR1c1wiOm51bGwsXCJ1c2VyTm9cIjpcIkMwMDAwMDkyNjFcIn0ifQ.AK0uzaEO2geC-AK_NGQ86FmOeCUTd1O1U03DJPl45ZU"
+
 @interface PAVideoCommitViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
@@ -98,10 +100,14 @@
 
 // 上传视频
 - (IBAction)commitVideo {
-    NSDictionary *parameters = @{};
+    NSDictionary *parameters = @{@"token" : PAToken};
     NSString *filePath = [[self.videoUrl absoluteString] stringByReplacingOccurrencesOfString:@"file://" withString:@""];
-    [PPNetworkHelper uploadFileWithURL:@"videoUrl" parameters:parameters name:@"file" filePath:filePath progress:^(NSProgress *progress) {
+    
+    [PPNetworkHelper uploadFileWithURL:PAURL(@"uploadVideo") parameters:parameters name:@"file" filePath:filePath progress:^(NSProgress *progress) {
         
+        // 进度
+        float completed = progress.completedUnitCount / progress.totalUnitCount;
+        [SVProgressHUD showProgress:completed status:NSLocalizedString(@"Uploading...", "正在上传...")];
         
     } success:^(id responseObject) {
         

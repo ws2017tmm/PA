@@ -63,6 +63,8 @@
 #define PAStoryboardInitialVC(storyboard) [[UIStoryboard storyboardWithName:storyboard bundle:nil] instantiateInitialViewController]
 
 #define PANotificationCenter NSNotificationCenter.defaultCenter
+
+#define PAURL(url) [NSString stringWithFormat:@"https://103.28.215.253:10489/dockToApp/api/ccs/customer/%@",url]
 /***********缩写*************/
 
 #endif /* PAFinance_pch */
