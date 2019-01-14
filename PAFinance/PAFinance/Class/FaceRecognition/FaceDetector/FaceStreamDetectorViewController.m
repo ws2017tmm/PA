@@ -559,7 +559,7 @@
 -(BOOL)identifyYourFaceLeft:(CGFloat)left right:(CGFloat)right top:(CGFloat)top bottom:(CGFloat)bottom
 {
     //判断位置
-    if (right - left < 230 || bottom - top < 250) {
+    if (right - left < 220 || bottom - top < 225) {
         self.textLabel.text = NSLocalizedString(@"It's too far away...", "太远了...");
         [self delateNumber];//清数据
         isCrossBorder = YES;
