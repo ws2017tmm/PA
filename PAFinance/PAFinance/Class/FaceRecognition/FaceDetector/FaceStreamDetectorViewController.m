@@ -327,7 +327,7 @@
         [self.lineView.layer removeAllAnimations];
         [self.lineView removeFromSuperview];
     } else {
-        [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"kindly reminder", "温馨提示") message:NSLocalizedString(@"There is no access to the camera. Do you want to set the right to open the camera inside?", "没有相机访问权限，是否去设置里面打开相机的权限？") cancelButtonTitle:NSLocalizedString(@"cancel", "取消") destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"confirm", "确认")] tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+        [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"kindly reminder", "温馨提示") message:NSLocalizedString(@"“One Enterprise Chain” Want to visit your camera", "“壹企链”想访问您的相机") cancelButtonTitle:NSLocalizedString(@"cancel", "取消") destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"confirm", "确认")] tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
             if (buttonIndex == 0) {
                 
             } else if (buttonIndex == 2) {

@@ -77,6 +77,7 @@
 		64E3103D21E72190007E3240 /* PAVideoCommitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E3103B21E72190007E3240 /* PAVideoCommitViewController.xib */; };
 		64ED091021ED851C00A5C610 /* AVCaptureDevice+Available.m in Sources */ = {isa = PBXBuildFile; fileRef = 64ED090F21ED851C00A5C610 /* AVCaptureDevice+Available.m */; };
 		64ED091521ED8BE300A5C610 /* UIAlertController+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 64ED091321ED8BE300A5C610 /* UIAlertController+Blocks.m */; };
+		64ED091821EDDF4D00A5C610 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64ED091A21EDDF4D00A5C610 /* InfoPlist.strings */; };
 		D7F3CF064247BD1F123E1594 /* libPods-PAFinance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C838F243A9E9DA04757324 /* libPods-PAFinance.a */; };
 /* End PBXBuildFile section */
 
@@ -201,6 +202,8 @@
 		64ED090F21ED851C00A5C610 /* AVCaptureDevice+Available.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AVCaptureDevice+Available.m"; sourceTree = "<group>"; };
 		64ED091321ED8BE300A5C610 /* UIAlertController+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Blocks.m"; sourceTree = "<group>"; };
 		64ED091421ED8BE300A5C610 /* UIAlertController+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Blocks.h"; sourceTree = "<group>"; };
+		64ED091921EDDF4D00A5C610 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		64ED091B21EDDF4E00A5C610 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		82ED49697C46D76786AB6790 /* Pods-PAFinance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PAFinance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PAFinance/Pods-PAFinance.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -470,6 +473,7 @@
 			isa = PBXGroup;
 			children = (
 				641EC26321D4D9F100EB3832 /* Localizable.strings */,
+				64ED091A21EDDF4D00A5C610 /* InfoPlist.strings */,
 			);
 			path = Languages;
 			sourceTree = "<group>";
@@ -772,6 +776,7 @@
 				64E3103D21E72190007E3240 /* PAVideoCommitViewController.xib in Resources */,
 				64D978A121E3471B00F4B3F3 /* shakeHead0.png in Resources */,
 				641EC25321D4CA4900EB3832 /* Login.storyboard in Resources */,
+				64ED091821EDDF4D00A5C610 /* InfoPlist.strings in Resources */,
 				64BE1FD421D7612200A38B4B /* PAInfoValidationViewController.xib in Resources */,
 				64BE1FD921D7695B00A38B4B /* PANextStepView.xib in Resources */,
 				641EC22821D4A0C200EB3832 /* LaunchScreen.storyboard in Resources */,
@@ -911,6 +916,15 @@
 				641EC26421D4D9F200EB3832 /* zh-Hans */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		64ED091A21EDDF4D00A5C610 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64ED091921EDDF4D00A5C610 /* en */,
+				64ED091B21EDDF4E00A5C610 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
