@@ -44,8 +44,7 @@
         AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
         if(authStatus ==AVAuthorizationStatusRestricted || authStatus ==AVAuthorizationStatusDenied){
             return NO;
-        }
-        else if(authStatus==AVAuthorizationStatusNotDetermined){
+        } else if (authStatus==AVAuthorizationStatusNotDetermined){
             dispatch_semaphore_t sema = dispatch_semaphore_create(0);
             __block BOOL isGranted=YES;
             [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
@@ -54,12 +53,10 @@
             }];
             dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
             return isGranted;
-        }
-        else{
+        } else {
             return YES;
         }
-    }
-    else{
+    } else {
         return YES;
     }
 }

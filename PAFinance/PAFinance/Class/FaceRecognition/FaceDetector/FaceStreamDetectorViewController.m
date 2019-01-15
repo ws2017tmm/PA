@@ -25,6 +25,8 @@
 #import <PPNetworkHelper.h>
 #import <SVProgressHUD.h>
 #import "PAPrepareVideoViewController.h"
+#import "AVCaptureDevice+Available.h"
+#import "UIAlertController+Blocks.h"
 
 #define PAToken @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwYXlsb2FkIjoie1wiY3VycmVudFBhZ2VcIjpudWxsLFwicGFnZVNpemVcIjpudWxsLFwidG90YWxQYWdlc1wiOjAsXCJjb3VudFwiOjAsXCJ0b3RhbE51bVwiOjAsXCJkYXRhXCI6bnVsbCxcInRva2VuSWRcIjpudWxsLFwiY2xpZW50SXBcIjpudWxsLFwicmVxdWVzdElkXCI6bnVsbCxcInNlc3Npb25JZFwiOm51bGwsXCJvcHJhdGlvbk9ialwiOm51bGwsXCJidXNpbmVzc1R5cGVcIjpudWxsLFwia2V5XCI6bnVsbCxcInNpZ25LZXlcIjpudWxsLFwiY3VzdG9tZXJJZFwiOm51bGwsXCJjdXN0b21lck5vXCI6bnVsbCxcImN1c3RvbWVyVHlwZVwiOm51bGwsXCJjdXN0b21lck5hbWVcIjpudWxsLFwiY3VzdG9tZXJOYW1lRW5cIjpudWxsLFwiY3VzdG9tZXJPcmdhblR5cGVcIjpudWxsLFwicmVnaXN0ZXJlZENhcGl0YWxDdXJyZW5jeVwiOm51bGwsXCJyZWdpc3RlcmVkQ2FwaXRhbEFtb3VudFwiOm51bGwsXCJlbnRlcnByaXNlVHlwZVwiOm51bGwsXCJyZXNpZGVuY2VcIjpudWxsLFwibGVnYWxSZXByZXNlbnRhdGl2ZU5hbWVcIjpudWxsLFwibGVnYWxSZXByZXNlbnRhdGl2ZUlkVHlwZVwiOm51bGwsXCJsZWdhbFJlcHJlc2VudGF0aXZlSWRcIjpudWxsLFwic2V0dXBEYXRlXCI6bnVsbCxcIm9wZW5CYW5rXCI6bnVsbCxcIm9wZW5CYW5rQWNjb3VudE5vXCI6bnVsbCxcImNvbnRhY3RBZGRyZXNzXCI6bnVsbCxcImNvbnRhY3ROYW1lXCI6bnVsbCxcImNvbnRhY3RQaG9uZVwiOm51bGwsXCJjb250YWN0RW1haWxcIjpudWxsLFwiY29udGFjdE90aGVyXCI6bnVsbCxcInJlbWFya1wiOm51bGwsXCJpbmR1c3RyeVR5cGVcIjpudWxsLFwib3JnYW5pemF0aW9uVHlwZVwiOm51bGwsXCJjZXJ0aWZpY2F0ZUltYWdlSWRcIjpudWxsLFwicmVnaXN0ZXJGbGFnXCI6bnVsbCxcInF1ZXJ5Q3VzdG9tZXJUeXBlXCI6bnVsbCxcInN0YXR1c1wiOm51bGwsXCJ1c2VyTm9cIjpcIkMwMDAwMDkyNjFcIn0ifQ.AK0uzaEO2geC-AK_NGQ86FmOeCUTd1O1U03DJPl45ZU"
 
@@ -314,14 +316,30 @@
 
 #pragma mark - 开始拍摄
 - (void)startShot:(UIButton *)button {
-    button.hidden = YES;
-    self.isStarting = YES;
-    self.titleLabel.hidden = YES;
-    self.tipLabel.hidden = YES;
-    self.textLabel.hidden = NO;
     
-    [self.lineView.layer removeAllAnimations];
-    [self.lineView removeFromSuperview];
+    if (AVCaptureDevice.isCaptureVideoPermission) {
+        button.hidden = YES;
+        self.isStarting = YES;
+        self.titleLabel.hidden = YES;
+        self.tipLabel.hidden = YES;
+        self.textLabel.hidden = NO;
+        
+        [self.lineView.layer removeAllAnimations];
+        [self.lineView removeFromSuperview];
+    } else {
+        [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"kindly reminder", "温馨提示") message:NSLocalizedString(@"There is no access to the camera. Do you want to set the right to open the camera inside?", "没有相机访问权限，是否去设置里面打开相机的权限？") cancelButtonTitle:NSLocalizedString(@"cancel", "取消") destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"confirm", "确认")] tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+            if (buttonIndex == 0) {
+                
+            } else if (buttonIndex == 2) {
+                NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                if ([UIApplication.sharedApplication canOpenURL:url]) {
+                    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+                }
+            }
+        }];
+    }
+    
+    
 }
 
 /// 上下扫描动画

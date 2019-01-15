@@ -25,9 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- 摄像头的授权状态
+ 用户相机的授权状态
  */
-+ (AVAuthorizationStatus)videoAuthStatus;
++ (BOOL)isCaptureVideoPermission;
+
 
 @end
 

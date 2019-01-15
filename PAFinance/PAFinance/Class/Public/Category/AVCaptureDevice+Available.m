@@ -22,14 +22,26 @@
 }
 
 ///  摄像头的授权状态
-+ (AVAuthorizationStatus)videoAuthStatus {
-    // 读取媒体类型
-    NSString *mediaType = AVMediaTypeVideo;
-    
-    //读取设备授权状态
-    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
-    
-    return authStatus;
++(BOOL)isCaptureVideoPermission {
+    if ([AVCaptureDevice respondsToSelector:@selector(authorizationStatusForMediaType:)]){
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        if(authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied){
+            return NO;
+        } else if (authStatus == AVAuthorizationStatusNotDetermined){
+            dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+            __block BOOL isGranted=YES;
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+                isGranted = granted;
+                dispatch_semaphore_signal(sema);
+            }];
+            dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+            return isGranted;
+        } else {
+            return YES;
+        }
+    } else {
+        return YES;
+    }
 }
 
 @end
