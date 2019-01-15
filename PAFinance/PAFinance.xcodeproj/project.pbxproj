@@ -75,6 +75,8 @@
 		64E3103821E6F722007E3240 /* NSDate+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E3103721E6F722007E3240 /* NSDate+Compare.m */; };
 		64E3103C21E72190007E3240 /* PAVideoCommitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E3103A21E72190007E3240 /* PAVideoCommitViewController.m */; };
 		64E3103D21E72190007E3240 /* PAVideoCommitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E3103B21E72190007E3240 /* PAVideoCommitViewController.xib */; };
+		64ED091021ED851C00A5C610 /* AVCaptureDevice+Available.m in Sources */ = {isa = PBXBuildFile; fileRef = 64ED090F21ED851C00A5C610 /* AVCaptureDevice+Available.m */; };
+		64ED091521ED8BE300A5C610 /* UIAlertController+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 64ED091321ED8BE300A5C610 /* UIAlertController+Blocks.m */; };
 		D7F3CF064247BD1F123E1594 /* libPods-PAFinance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C838F243A9E9DA04757324 /* libPods-PAFinance.a */; };
 /* End PBXBuildFile section */
 
@@ -195,6 +197,10 @@
 		64E3103921E72190007E3240 /* PAVideoCommitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAVideoCommitViewController.h; sourceTree = "<group>"; };
 		64E3103A21E72190007E3240 /* PAVideoCommitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAVideoCommitViewController.m; sourceTree = "<group>"; };
 		64E3103B21E72190007E3240 /* PAVideoCommitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PAVideoCommitViewController.xib; sourceTree = "<group>"; };
+		64ED090E21ED851C00A5C610 /* AVCaptureDevice+Available.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AVCaptureDevice+Available.h"; sourceTree = "<group>"; };
+		64ED090F21ED851C00A5C610 /* AVCaptureDevice+Available.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AVCaptureDevice+Available.m"; sourceTree = "<group>"; };
+		64ED091321ED8BE300A5C610 /* UIAlertController+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Blocks.m"; sourceTree = "<group>"; };
+		64ED091421ED8BE300A5C610 /* UIAlertController+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Blocks.h"; sourceTree = "<group>"; };
 		82ED49697C46D76786AB6790 /* Pods-PAFinance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PAFinance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PAFinance/Pods-PAFinance.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -471,6 +477,7 @@
 		64BE1FB121D60F8C00A38B4B /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				64ED091121ED8BA900A5C610 /* Lib */,
 				64BE1FCC21D74EAA00A38B4B /* Const */,
 				64BE1FB221D60F8C00A38B4B /* Tools */,
 				64BE1FB321D60F8C00A38B4B /* Category */,
@@ -507,6 +514,8 @@
 				64D978CB21E4777900F4B3F3 /* UIButton+Button.m */,
 				64E3103621E6F722007E3240 /* NSDate+Compare.h */,
 				64E3103721E6F722007E3240 /* NSDate+Compare.m */,
+				64ED090E21ED851C00A5C610 /* AVCaptureDevice+Available.h */,
+				64ED090F21ED851C00A5C610 /* AVCaptureDevice+Available.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -657,6 +666,23 @@
 				64E3103421E5CBE1007E3240 /* UIUtility.m */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		64ED091121ED8BA900A5C610 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				64ED091221ED8BBB00A5C610 /* UIAlertController+Blocks */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		64ED091221ED8BBB00A5C610 /* UIAlertController+Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				64ED091421ED8BE300A5C610 /* UIAlertController+Blocks.h */,
+				64ED091321ED8BE300A5C610 /* UIAlertController+Blocks.m */,
+			);
+			path = "UIAlertController+Blocks";
 			sourceTree = "<group>";
 		};
 		64F8175D21DDFB700003137A /* FaceRecognition */ = {
@@ -814,6 +840,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64ED091521ED8BE300A5C610 /* UIAlertController+Blocks.m in Sources */,
 				64BE1FDC21D76F5D00A38B4B /* UIView+Extension.m in Sources */,
 				64BE1FC821D61A4A00A38B4B /* PAVerificationCodeTool.m in Sources */,
 				64BE1FC521D6158700A38B4B /* PAForgetPasswordViewController.m in Sources */,
@@ -847,6 +874,7 @@
 				64BE1FD721D7694700A38B4B /* PANextStepView.m in Sources */,
 				64D978CC21E4777900F4B3F3 /* UIButton+Button.m in Sources */,
 				64E3103521E5CBE1007E3240 /* UIUtility.m in Sources */,
+				64ED091021ED851C00A5C610 /* AVCaptureDevice+Available.m in Sources */,
 				64BE1FCF21D74F2B00A38B4B /* PAConst.m in Sources */,
 				641EC21D21D4A0C100EB3832 /* AppDelegate.m in Sources */,
 				64E3102C21E5CB71007E3240 /* PAProgressView.m in Sources */,

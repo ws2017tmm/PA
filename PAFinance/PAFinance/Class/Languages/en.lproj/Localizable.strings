@@ -76,6 +76,8 @@
 
 "Confirm upload" = "Confirm upload";
 
+"cancel" = "cancel";
+
 "Video dual recording" = "Video dual recording";
 
 "Please record a video to confirm your identity." = "Please record a video to confirm your identity.";
@@ -109,3 +111,5 @@
 "I understand and confirm" = "I understand and confirm,";
 
 "the right to use registered accounts on the platform belongs to the entity, and the rights and obligations arising from self-registration shall be borne by the entity." = "the right to use registered accounts on the platform belongs to the entity, and the rights and obligations arising from self-registration shall be borne by the entity.";
+
+"There is no access to the camera. Do you want to set the right to open the camera inside?" = "There is no access to the camera. Do you want to set the right to open the camera inside?";

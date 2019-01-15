@@ -329,6 +329,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 
 + (AVCaptureDevice *)deviceWithMediaType:(NSString *)mediaType preferringPosition:(AVCaptureDevicePosition)position
 {
+//    [AVCaptureDeviceDiscoverySession discoverySessionWithDeviceTypes:(nonnull NSArray<AVCaptureDeviceType> *) mediaType:<#(nullable AVMediaType)#> position:<#(AVCaptureDevicePosition)#>]
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:mediaType];
     AVCaptureDevice *captureDevice = [devices firstObject];
     
@@ -346,9 +347,20 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
 
 -(void)showAlert:(NSString*)info
 {
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:info delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-    [alert show];
-    alert=nil;
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"kindly reminder", "温馨提示") message:info preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", "取消") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *comfirmlAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"confirm", "确认") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        if ([UIApplication.sharedApplication canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+        }
+    }];
+    [alertVC addAction:cancelAction];
+    [alertVC addAction:comfirmlAction];
+    [UIApplication.sharedApplication.keyWindow.rootViewController presentViewController:alertVC animated:YES completion:nil];
 }
 
 - (void)checkDeviceAuthorizationStatus
@@ -358,7 +370,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     }
     else{
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSString* info=@"没有相机权限";
+            NSString *info = NSLocalizedString(@"There is no access to the camera. Do you want to set the right to open the camera inside?", "没有相机访问权限，是否去设置里面打开相机的权限？");
             [self showAlert:info];
             [self setDeviceAuthorized:NO];
         });

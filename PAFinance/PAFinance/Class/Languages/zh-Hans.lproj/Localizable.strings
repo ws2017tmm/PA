@@ -98,6 +98,8 @@
 
 "confirm" = "确认";
 
+"cancel" = "取消";
+
 "Authentication completed" = "认证完成";
 
 "Please wait patiently for the review of Fukuda financial personnel. The results of the audit will be notified to you by SMS." = "请耐心等待福田金融业务人员的审核，审核的结果将以短信通知您。";
@@ -109,3 +111,5 @@
 "I understand and confirm" = "我理解并确认，";
 
 "the right to use registered accounts on the platform belongs to the entity, and the rights and obligations arising from self-registration shall be borne by the entity." = "在富金平台的注册账号使用权属于本单位主体，自注册产生的权利义务由本单位承担。";
+
+"There is no access to the camera. Do you want to set the right to open the camera inside?" = "没有相机访问权限，是否去设置里面打开相机的权限？";
