@@ -317,7 +317,7 @@
 #pragma mark - 开始拍摄
 - (void)startShot:(UIButton *)button {
     
-    if (AVCaptureDevice.isCaptureVideoPermission) {
+    if ([AVCaptureDevice isCapturePermissionMediaType:AVMediaTypeVideo]) {
         button.hidden = YES;
         self.isStarting = YES;
         self.titleLabel.hidden = YES;

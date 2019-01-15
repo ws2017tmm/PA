@@ -15,6 +15,8 @@
 #import "UIUtility.h"
 #import "UtilsMacro.h"
 #import <SVProgressHUD.h>
+#import "AVCaptureDevice+Available.h"
+#import "UIAlertController+Blocks.h"
 //时间大于这个就是视频，否则为拍照
 #define TimeMax 1
 
@@ -200,6 +202,10 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
  设置自顶一下相机
  */
 - (void)setupCustomCamera {
+    
+    // 判断权限
+    [self checkDeviceAuthorizationStatus];
+    
     //初始化会话，用来结合输入输出
     self.session = [[AVCaptureSession alloc] init];
     //设置分辨率 (设备支持的最高分辨率)
@@ -259,6 +265,25 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     [self addNotificationToCaptureDevice:captureDevice];
     [self addGenstureRecognizer];
     
+}
+
+#pragma mark - 判断用户权限
+- (void)checkDeviceAuthorizationStatus {
+    if ([AVCaptureDevice isCapturePermissionMediaType:AVMediaTypeAudio]) {
+        
+    } else {
+        
+        [UIAlertController showAlertInViewController:UIApplication.sharedApplication.keyWindow.rootViewController withTitle:NSLocalizedString(@"kindly reminder", "温馨提示") message:NSLocalizedString(@"“One Enterprise Chain” Want to visit your microphone", "“壹企链”想访问您的麦克风") cancelButtonTitle:NSLocalizedString(@"cancel", "取消") destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"confirm", "确认")] tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+            if (buttonIndex == 0) {
+                
+            } else if (buttonIndex == 2) {
+                NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                if ([UIApplication.sharedApplication canOpenURL:url]) {
+                    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+                }
+            }
+        }];
+    }
 }
 
 #pragma mark - 视频输出代理 AVCaptureFileOutputRecordingDelegate
@@ -519,9 +544,13 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 - (UILabel *)titleLabel {
     if (_titleLabel == nil) {
         PAUserModel *userModel = [PAUserModel sharedUserModel];
-#warning 待修改
-        NSString *text = [NSString stringWithFormat:@"%@%@%@",NSLocalizedString(@"I understand and confirm", "我理解并确认"),userModel.companyName,NSLocalizedString(@"the right to use registered accounts on the platform belongs to the entity, and the rights and obligations arising from self-registration shall be borne by the entity.", "在富金平台的注册账号使用权属于本单位主体，自注册产生的权利义务由本单位承担。")];
-        
+        NSString *text;
+        NSString *currentLanguage = NSBundle.mainBundle.preferredLocalizations.firstObject;
+        if ([currentLanguage isEqualToString:@"zh-Hans"]) {
+            text = [NSString stringWithFormat:@"我理解并确认，%@在富金平台的注册账号使用权属于本单位主体，自注册产生的权利义务由本单位承担。", userModel.companyName];
+        } else {
+            text = [NSString stringWithFormat:@"I understand and confirm,the right to use the registered accounts of %@ in the rich platform belongs to the main body of the unit, and the rights and obligations arising from the self-registration shall be borne by the unit.", userModel.companyName];
+        }
         _titleLabel = [UIUtility initLabelWithText:text fontSize:FontSize14 color:APP_WHITE textAlignment:NSTextAlignmentCenter];
         _titleLabel.numberOfLines = 0;
     }

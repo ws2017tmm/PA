@@ -22,9 +22,9 @@
 }
 
 ///  摄像头的授权状态
-+(BOOL)isCaptureVideoPermission {
++(BOOL)isCapturePermissionMediaType:(AVMediaType)mediaType {
     if ([AVCaptureDevice respondsToSelector:@selector(authorizationStatusForMediaType:)]){
-        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
         if(authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied){
             return NO;
         } else if (authStatus == AVAuthorizationStatusNotDetermined){

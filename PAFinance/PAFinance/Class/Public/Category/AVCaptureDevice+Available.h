@@ -25,9 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- 用户相机的授权状态
+ 用户的授权状态
  */
-+ (BOOL)isCaptureVideoPermission;
++ (BOOL)isCapturePermissionMediaType:(AVMediaType)mediaType;
 
 
 @end

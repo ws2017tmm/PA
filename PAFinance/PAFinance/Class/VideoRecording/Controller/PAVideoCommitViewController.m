@@ -38,24 +38,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = NSLocalizedString(@"Video dual recording", "视频双录");
-    self.videoImageView.image = [self videoHandlePhoto:self.videoUrl];
-    self.videoImageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.videoImageView.clipsToBounds = YES;
-    self.videoImageView.hidden = YES;
     
-    //创建播放器层
-    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
-    playerLayer.frame = self.videoImageView.layer.frame;
-    playerLayer.videoGravity =AVLayerVideoGravityResizeAspectFill;
-    [self.view.layer insertSublayer:playerLayer atIndex:0];
-    _playerLayer = playerLayer;
+    [self setupUI];
+    
+    [self setupPlayerLayer];
     
 }
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     _playerLayer.frame = self.videoImageView.layer.frame;
+}
+
+- (void)setupUI {
+    self.title = NSLocalizedString(@"Video dual recording", "视频双录");
+//    self.videoImageView.image = [self videoHandlePhoto:self.videoUrl];
+//    self.videoImageView.contentMode = UIViewContentModeScaleAspectFill;
+//    self.videoImageView.clipsToBounds = YES;
+    self.videoImageView.hidden = YES;
+    
+    PAUserModel *userModel = [PAUserModel sharedUserModel];
+    NSString *currentLanguage = NSBundle.mainBundle.preferredLocalizations.firstObject;
+    if ([currentLanguage isEqualToString:@"zh-Hans"]) {
+        self.tipLabel.text = [NSString stringWithFormat:@"我理解并确认，%@在富金平台的注册账号使用权属于本单位主体，自注册产生的权利义务由本单位承担。", userModel.companyName];
+    } else {
+        self.tipLabel.text = [NSString stringWithFormat:@"I understand and confirm,the right to use the registered accounts of %@ in the rich platform belongs to the main body of the unit, and the rights and obligations arising from the self-registration shall be borne by the unit.", userModel.companyName];
+    }
+    
+        
+    [self.rephotographBtn setTitle:NSLocalizedString(@"rephotograph", "重拍") forState:UIControlStateNormal];
+    [self.commitBtn setTitle:NSLocalizedString(@"commit", "提交") forState:UIControlStateNormal];
+    
+}
+
+- (void)setupPlayerLayer {
+    //创建播放器层
+    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+    playerLayer.frame = self.videoImageView.layer.frame;
+    playerLayer.videoGravity =AVLayerVideoGravityResizeAspectFill;
+    [self.view.layer insertSublayer:playerLayer atIndex:0];
+    _playerLayer = playerLayer;
 }
 
 #pragma mark - 创建播放器
