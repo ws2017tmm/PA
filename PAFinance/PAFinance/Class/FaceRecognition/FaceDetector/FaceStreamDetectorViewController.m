@@ -565,7 +565,7 @@
         isCrossBorder = YES;
         return YES;
     }else if (right - left > 320 || bottom - top > 320) {
-        self.textLabel.text = NSLocalizedString(@"Too close...", "太近了...");;
+        self.textLabel.text = NSLocalizedString(@"Too close...", "太近了...");
         [self delateNumber];//清数据
         isCrossBorder = YES;
         return YES;
