@@ -273,7 +273,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         
     } else {
         
-        [UIAlertController showAlertInViewController:UIApplication.sharedApplication.keyWindow.rootViewController withTitle:NSLocalizedString(@"kindly reminder", "温馨提示") message:NSLocalizedString(@"“One Enterprise Chain” Want to visit your microphone", "“壹企链”想访问您的麦克风") cancelButtonTitle:NSLocalizedString(@"cancel", "取消") destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"confirm", "确认")] tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+        [UIAlertController showAlertInViewController:UIApplication.sharedApplication.keyWindow.rootViewController withTitle:NSLocalizedString(@"kindly reminder", "温馨提示") message:NSLocalizedString(@"Can't access the microphone, do you want to set the right to open the camera inside?", "无法访问麦克风，是否去设置里面打开相机的权限？") cancelButtonTitle:NSLocalizedString(@"cancel", "取消") destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"confirm", "确认")] tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
             if (buttonIndex == 0) {
                 
             } else if (buttonIndex == 2) {

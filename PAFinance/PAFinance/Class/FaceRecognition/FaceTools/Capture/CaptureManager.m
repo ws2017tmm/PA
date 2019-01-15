@@ -370,7 +370,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     }
     else{
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSString *info = NSLocalizedString(@"“One Enterprise Chain” Want to visit your camera", "“壹企链”想访问您的相机");
+            NSString *info = NSLocalizedString(@"There is no access to the camera. Do you want to set the right to open the camera inside?", "没有相机访问权限，是否去设置里面打开相机的权限？");
             [self showAlert:info];
             [self setDeviceAuthorized:NO];
         });
